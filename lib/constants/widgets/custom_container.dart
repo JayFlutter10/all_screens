@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+
+class CustomContainer extends StatefulWidget {
+  const CustomContainer({super.key});
+
+  @override
+  State<CustomContainer> createState() => _CustomContainerState();
+}
+
+class _CustomContainerState extends State<CustomContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+Widget customContainer({
+  double? height,
+  double? imageOpacity,
+  double? width,
+  Color? containerColor,
+  Color? borderColor,
+  required double  bRadius,
+  double? margin,
+  double? hPadding,
+  double? vPadding,
+  String? assetsImg,
+  String? networkImg,
+  Color? shadowColor,
+  double? shadowBlurRadius,
+  Offset? shadowOffset,
+  Gradient? gradient,
+  Widget? child,
+  VoidCallback? onTap,
+}){
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      height: height,
+      width: width,
+
+      margin: EdgeInsets.all(margin ?? 0.0),
+      padding: EdgeInsets.symmetric(horizontal: hPadding??0.0, vertical: vPadding ??0.0),
+      decoration: BoxDecoration(
+        color: gradient == null ? containerColor ?? Colors.white : null,
+        gradient: gradient,
+        border: Border.all(color: borderColor?? Colors.grey.shade100, width: 0.5),
+        borderRadius: BorderRadius.circular(bRadius),
+        image: (networkImg != null)
+            ? DecorationImage(image: NetworkImage(networkImg), fit: BoxFit.cover,opacity: imageOpacity??1.0)
+            : (assetsImg != null)
+            ? DecorationImage(image: AssetImage(assetsImg), fit: BoxFit.cover,opacity:imageOpacity??1.0)
+            : null,
+
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor ?? Colors.grey.shade100,
+            blurRadius: shadowBlurRadius ?? 1.0,
+            offset: shadowOffset ?? const Offset(0.5, 0.5),
+          ),
+        ],
+      ),
+
+      child: child,
+    ),
+  );}
