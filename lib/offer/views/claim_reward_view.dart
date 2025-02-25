@@ -44,6 +44,7 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
         child: CustomScrollView(
           shrinkWrap: true,
           slivers: [
+
             ///AppBar
             SliverAppBar.large(
               expandedHeight: height*0.3,
@@ -207,6 +208,8 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                 ),
               ),
             ):SliverToBoxAdapter(),
+
+            ///Extra height for bottom
             SliverToBoxAdapter(child: SizedBox(height: height*0.1,)),
 
           ],

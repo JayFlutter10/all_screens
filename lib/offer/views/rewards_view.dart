@@ -34,6 +34,7 @@ class _RewardsViewState extends State<RewardsView> {
   ///user_recruited_franchise_members must not exceed 20
    final int userRecruitedMembers=11 ;
    final int necessaryMembers=20;
+   // ignore: unused_local_variable
    int userRecruitLeft=0;
     return Scaffold(
       appBar: AppBar(),
@@ -190,7 +191,7 @@ class _RewardsViewState extends State<RewardsView> {
                            //        left: 10,
                            //        right: 10,
                            //      ),
-                           //      duration: const Duration(milliseconds: 300),
+                           //      duration: const Duration(seconds: 2),
                            //      behavior: SnackBarBehavior.floating,
                            //      content: Center(child: index==1?Text("${userRecruitLeft + 20} members are left to unlock the reward"
                            //        //,style: textStyle16(context,color: Colors.white),
@@ -213,30 +214,4 @@ class _RewardsViewState extends State<RewardsView> {
       ),
     );
   }
-}
-Widget _dash({required double width,required double height}){
-  return Column(
-    children: [
-      customContainer(
-        margin: 8,
-          containerColor: Color.fromRGBO(0, 80, 157, 1),
-          bRadius: 4,
-          borderColor: Color.fromRGBO(0, 80, 157,1),
-          width: width*0.01,
-          height: height*0.065
-      ),
-    ],
-  );
-}
-Widget _rowText({required double width,required BuildContext context,required IconData icon,required String text}){
-  return Row(
-    children: [
-      CircleAvatar(radius: width*0.03,child: Icon(icon,size: width*0.04,),),
-      Expanded(
-        child: Text(text,style: TextStyle(fontSize: 12)
-          //,style: textStyle14(context)
-          ),
-      ),
-    ],
-  );
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:side_bizbooster/constants/colors/app_colors.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 
 class AllScreen extends StatefulWidget {
@@ -20,13 +19,13 @@ class _AllScreenState extends State<AllScreen> {
     '/terms_conditions',
     '/color_test_view',
     '/chart',
+    '/submit_details_screen',
   ];
   final List<String> nameOfPages=[
-    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X'
+    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart'
   ];
   @override
   Widget build(BuildContext context) {
-    final double height=MediaQuery.of(context).size.height;
     final double width=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(),

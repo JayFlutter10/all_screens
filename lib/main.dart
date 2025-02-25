@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:side_bizbooster/Testing/Color/color_test_view.dart';
 import 'package:side_bizbooster/academy/view/video_academy_main.dart';
 import 'package:side_bizbooster/all_screen.dart';
+import 'package:side_bizbooster/cart/view/submit_details_screen.dart';
 import 'package:side_bizbooster/chart.dart';
 import 'package:side_bizbooster/favourite/view/favourite_view_screen.dart';
 import 'package:side_bizbooster/packages/views/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/selected_package_screen.dart';
 import 'package:side_bizbooster/shorts/views/navigate_to_shorts.dart';
 import 'package:side_bizbooster/tandc_5X/View/terms_conditions.dart';
-
 import 'academy/view/certificate_view.dart';
 import 'academy/view/live_webinar_view.dart';
 import 'academy/view/training_view.dart';
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/terms_conditions':(context)=>TermsConditions(),
         '/color_test_view':(context)=>ColorTestView(),
         '/chart':(context)=>SemiCircleChart(),
+        '/submit_details_screen':(context)=>SubmitDetailsScreen(),
       },
 
       debugShowCheckedModeBanner: false,
