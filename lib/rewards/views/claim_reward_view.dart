@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../constants/widgets/custom_container.dart';
 
 class ClaimRewardView extends StatefulWidget {
@@ -65,7 +64,7 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                       children: [
                         CircleAvatar(radius: height*0.04,backgroundImage: AssetImage(widget.iconImage),),
                         SizedBox(width: width*0.05,),
-                        Text(widget.companyName
+                        Text(widget.companyName,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
                           //,style: textStyle16(context),
                         ),
                       ],
@@ -151,7 +150,7 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Thank you!',style: TextStyle(fontSize: 16),),
+                            Text('Thank you!',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
                             Text('Your order #BE12345 has been placed.'),
                           ],
                         )
@@ -202,7 +201,8 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.fire_truck_outlined,size: width*0.08,),
-                    Text('Arrives by April 3 to April 9th',style: TextStyle(fontSize: 16),)
+                    SizedBox(width: width*0.05,),
+                    Text('Arrives by April 3 to April 9th',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),)
                   ],
                 ),
               ),
@@ -226,7 +226,7 @@ Widget _expansion({required String headline,required IconData icon,required bool
         children: [
           Icon(icon,color: Colors.grey,),
           SizedBox(width: width,),
-          Text(headline
+          Text(headline,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),
             //,style: textStyle16(context,color: Colors.grey),
           ),
         ],
