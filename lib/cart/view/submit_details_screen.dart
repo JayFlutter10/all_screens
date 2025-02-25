@@ -42,9 +42,9 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
                         rowTextField(name: 'Mobile No.',width:width*0.03,height: height*0.05,controller:nameController,isManda: true),
                         SizedBox(height: height*0.02,),
                         rowTextField(name: 'Address',width:width*0.03,height: height*0.05,controller:nameController,isManda: true),
-                        SizedBox(height: height*0.05,),
-                        Text('Requirements',style: TextStyle(fontSize: 14,color: Colors.grey),),
                         SizedBox(height: height*0.03,),
+                        Text('Requirements',style: TextStyle(fontSize: 14,color: Colors.grey),),
+                        SizedBox(height: height*0.02,),
         
                       ],
                     )
