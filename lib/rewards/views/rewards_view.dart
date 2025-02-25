@@ -13,7 +13,7 @@ class RewardsView extends StatefulWidget {
 class _RewardsViewState extends State<RewardsView> {
   @override
   Widget build(BuildContext context) {
-    final List<dynamic> data=[
+    final List<dynamic> dataOfReward=[
       {
         'company':'Apple',
         'offer':'Get a free I-Pad',
@@ -30,9 +30,10 @@ class _RewardsViewState extends State<RewardsView> {
 
     final double height=MediaQuery.of(context).size.height;
     final double width=MediaQuery.of(context).size.width;
-    ///user_recruited_franchise_members must not exceed 20
-   final int userRecruitedFranchiseMembers=20;
-   final int recruitNumber=20;
+
+  ///user_recruited_franchise_members must not exceed 20
+   final int userRecruitedMembers=11 ;
+   final int necessaryMembers=20;
    int userRecruitLeft=0;
     return Scaffold(
       appBar: AppBar(),
@@ -42,7 +43,7 @@ class _RewardsViewState extends State<RewardsView> {
           child: Column(
             children: [
               ///Center Text
-              Center(child: Text('Complete tasks & get exclusive rewards'
+              Center(child: Text('Complete tasks & get exclusive rewards',style: TextStyle(fontSize: 16),
                 //,style: textStyle18(context)
               )),
               SizedBox(height: height*0.04,),
@@ -51,7 +52,7 @@ class _RewardsViewState extends State<RewardsView> {
               ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                  itemCount: 2,
+                  itemCount: dataOfReward.length,
                   itemBuilder: (context,index)
                   {
                 return customContainer(
@@ -91,7 +92,7 @@ class _RewardsViewState extends State<RewardsView> {
                       ),
 
                       ///banner image
-                      customContainer(bRadius: 12,assetsImg: data[index]['banner'],height: height*0.2),
+                      customContainer(bRadius: 12,assetsImg: dataOfReward[index]['banner'],height: height*0.2),
                       Padding(
                         padding:  EdgeInsets.only(top:height*0.02),
                         child: Row(
@@ -108,7 +109,7 @@ class _RewardsViewState extends State<RewardsView> {
                                 Text('Apple'
                                   //,style: textStyle16(context),
                                 ),
-                                Text(data[index]['offer']
+                                Text(dataOfReward[index]['offer']
                                   //,style: textStyle18(context)
                                   ,),
                               ],
@@ -136,7 +137,7 @@ class _RewardsViewState extends State<RewardsView> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                    index==1?'0':userRecruitedFranchiseMembers.toString()
+                                    index==1?'0':userRecruitedMembers.toString()
                                   //,style: textStyle16(context)
                                 ),
                                 customContainer(bRadius: width*0.5, width: width*0.75, height: height*0.009,
@@ -144,8 +145,8 @@ class _RewardsViewState extends State<RewardsView> {
                                   child: LinearProgressBar(
                                     progressColor: Colors.red,
                                     borderRadius: BorderRadius.circular(width*0.05),
-                                    maxSteps: recruitNumber,
-                                    currentStep: index==1?0:userRecruitedFranchiseMembers,
+                                    maxSteps: necessaryMembers,
+                                    currentStep: index==1?0:userRecruitedMembers,
                                   ),
                                 ),
                                 Text('20'
@@ -153,7 +154,7 @@ class _RewardsViewState extends State<RewardsView> {
                                 ),
                               ],
                             ),
-                            userRecruitedFranchiseMembers==recruitNumber?Center(child: Text('Completed'
+                            userRecruitedMembers==necessaryMembers?Center(child: Text('Completed'
                               //,style: textStyle16(fontWeight: FontWeight.w600,context,color: Colors.green)
                               ,)):Container()
                           ],
@@ -166,7 +167,7 @@ class _RewardsViewState extends State<RewardsView> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              userRecruitedFranchiseMembers!=recruitNumber?Icon(Icons.lock_outline,color: Colors.white,size: height*0.025,):Container(),
+                              userRecruitedMembers!=necessaryMembers?Icon(Icons.lock_outline,color: Colors.white,size: height*0.025,):Container(),
                               Center(
                                 child: Padding(
                                   padding: const EdgeInsets.only(left:8.0),
@@ -178,26 +179,26 @@ class _RewardsViewState extends State<RewardsView> {
                             ],
                           ),
                           onTap: (){
-                            userRecruitLeft=recruitNumber-userRecruitedFranchiseMembers;
-                            userRecruitedFranchiseMembers==recruitNumber?
-                            Navigator.push(context, MaterialPageRoute(builder:(context)=>ClaimRewardView(imageBanner: data[index]['banner'], iconImage: data[index]['icon'], companyName: data[index]['company'], offerText: data[index]['offer'],))):
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                margin: EdgeInsets.only(
-                                  bottom:height * 0.08,
-                                  left: 10,
-                                  right: 10,
-                                ),
-                                duration: const Duration(milliseconds: 300),
-                                behavior: SnackBarBehavior.floating,
-                                content: Center(child: index==1?Text("${userRecruitLeft + 20} members are left to unlock the reward"
-                                  //,style: textStyle16(context,color: Colors.white),
-                                ):Text("$userRecruitLeft members are left to unlock the reward"
-                                  //,style: textStyle16(context,color: Colors.white),
-                                ),
-                                ),
-                                backgroundColor: Color.fromRGBO(0, 80, 157, 1),),
-                            );
+                           userRecruitLeft=necessaryMembers-userRecruitedMembers;
+
+                           // userRecruitedMembers==necessaryMembers?
+                            Navigator.push(context, MaterialPageRoute(builder:(context)=>ClaimRewardView(imageBanner: dataOfReward[index]['banner'], iconImage: dataOfReward[index]['icon'], companyName: dataOfReward[index]['company'], offerText: dataOfReward[index]['offer'],)));
+
+                           // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                           //      margin: EdgeInsets.only(
+                           //        bottom:height * 0.08,
+                           //        left: 10,
+                           //        right: 10,
+                           //      ),
+                           //      duration: const Duration(milliseconds: 300),
+                           //      behavior: SnackBarBehavior.floating,
+                           //      content: Center(child: index==1?Text("${userRecruitLeft + 20} members are left to unlock the reward"
+                           //        //,style: textStyle16(context,color: Colors.white),
+                           //      ):Text("$userRecruitLeft members are left to unlock the reward"
+                           //        //,style: textStyle16(context,color: Colors.white),
+                           //      ),
+                           //      ),
+                           //      backgroundColor: Color.fromRGBO(0, 80, 157, 1),),);
                       }
                       ),
                       SizedBox(height:5 ,),

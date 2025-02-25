@@ -16,7 +16,7 @@ class ClaimRewardView extends StatefulWidget {
 }
 
 class _ClaimRewardViewState extends State<ClaimRewardView> {
-   bool isRedeemed=false;
+  bool isRedeemed=false;
   final List<dynamic> details=[
     {
       'icon':CupertinoIcons.calendar,
@@ -34,9 +34,6 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
       'subtitle':'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl at fermentum tincidunt, lorem libero dictum odio, non gravida nisi justo vel lorem. Vivamus ultricies, lectus sed cursus gravida, risus libero convallis tortor, vel molestie neque magna a metus. Proin vel turpis id lacus aliquet eleifend ut ac arcu. Ut at felis nec quam laoreet tincidunt Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl at fermentum tincidunt, lorem libero dictum odio, non gravida nisi justo vel lorem. Vivamus ultricies, lectus sed cursus gravida, risus libero convallis tortor, vel molestie neque magna a metus. Proin vel turpis id lacus aliquet eleifend ut ac arcu. Ut at felis nec quam laoreet tincidunt',
     },
   ];
-
-  final TextEditingController _controller = TextEditingController(text: 'Fixed Text');
-
   int selection =0;
 
   @override
@@ -45,99 +42,71 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
     final double width=MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: width*0.02),
-          child: CustomScrollView(
-            shrinkWrap: true,
-            slivers: [
-              ///AppBar
-              SliverAppBar.large(
-                expandedHeight: height*0.3,
-                flexibleSpace:
-                FlexibleSpaceBar(
-                  background: Image.asset(widget.imageBanner,fit: BoxFit.cover,),
-                ),
+        child: CustomScrollView(
+          shrinkWrap: true,
+          slivers: [
+            ///AppBar
+            SliverAppBar.large(
+              expandedHeight: height*0.3,
+              flexibleSpace:
+              FlexibleSpaceBar(
+                background: Image.asset(widget.imageBanner,fit: BoxFit.cover,),
               ),
+            ),
 
-              ///Like Dislike
-              SliverToBoxAdapter(
-                child:Padding(
-                  padding:  EdgeInsets.all(width*0.05),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(radius: height*0.04,backgroundImage: AssetImage(widget.iconImage),),
-                          SizedBox(width: width*0.05,),
-                          Text(widget.companyName
-                            //,style: textStyle16(context),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CircleAvatar(backgroundColor: Color.fromRGBO(0, 80, 157, 0.3),child: InkWell(onTap: (){
-
-                          }, child: Icon(CupertinoIcons.hand_thumbsup,color: Colors.white,)),),
-                          SizedBox(width: width*0.05,),
-                          CircleAvatar(backgroundColor: Color.fromRGBO(0, 80, 157, 0.3), child: Icon(CupertinoIcons.hand_thumbsdown,color: Colors.white,))
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-
-              ///Offer Description
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding:  EdgeInsets.only(left:width*0.05),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(widget.offerText
-                        //,style: textStyle18(context),
-                      ),
-                      Text('+ Free delivery on orders above 199'
-                        //,style: textStyle14(context,color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              ///Copy Redeem Code
-              SliverToBoxAdapter(
-                child: customContainer(
-                  height: height*0.05,
-                  borderColor: Colors.grey.shade500,
-                  margin: 10,
-                  bRadius: 20,
-                  child: TextFormField(
-                    style: TextStyle(letterSpacing: 6,fontSize: 18,),
-                    decoration: InputDecoration(
-                      contentPadding:EdgeInsets.only(left:width*0.05,top: height*0.015),
-                      border: InputBorder.none,
-                      suffixIcon: IconButton(
-                        onPressed: (){
-                        Clipboard.setData(ClipboardData(text: _controller.text));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Center(child: Text("Copied to clipboard!"
-                            //,style: textStyle16(context,color: Colors.white),
-                          )),backgroundColor: Color.fromRGBO(0, 80, 157, 1),),
-                        );
-                      }, icon: Icon(Icons.copy,size:width*0.05,),)
+            ///Like Dislike
+            SliverToBoxAdapter(
+              child:Padding(
+                padding:  EdgeInsets.all(width*0.05),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(radius: height*0.04,backgroundImage: AssetImage(widget.iconImage),),
+                        SizedBox(width: width*0.05,),
+                        Text(widget.companyName
+                          //,style: textStyle16(context),
+                        ),
+                      ],
                     ),
-                    controller:_controller,
-                    readOnly: true,
-                    obscureText: true,
-                  ),
-                )
+                    Row(
+                      children: [
+                        CircleAvatar(backgroundColor: Color.fromRGBO(0, 80, 157, 0.3),child: InkWell(onTap: (){
+                        }, child: Icon(CupertinoIcons.hand_thumbsup,color: Colors.white,)),),
+                        SizedBox(width: width*0.05,),
+                        CircleAvatar(backgroundColor: Color.fromRGBO(0, 80, 157, 0.3), child: Icon(CupertinoIcons.hand_thumbsdown,color: Colors.white,))
+                      ],
+                    )
+                  ],
                 ),
+              ),
+            ),
 
-              ///Expiry,Offer Details & Terms and Conditions
-              SliverToBoxAdapter(
+            ///Offer Description
+            SliverToBoxAdapter(
+              child: Padding(
+                padding:  EdgeInsets.only(left:width*0.05),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.offerText
+                      //,style: textStyle18(context),
+                    ),
+                    Text('+ Free delivery on orders above 199'
+                      //,style: textStyle14(context,color: Colors.grey),
+                    ),
+                    SizedBox(height: height*0.04,)
+                  ],
+                ),
+              ),
+            ),
+
+            ///Expiry,Offer Details & Terms and Conditions
+            SliverToBoxAdapter(
+                child: customContainer(
+                  margin: width*0.025,
+                  bRadius: width*0.02,
                   child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -146,9 +115,12 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                     return _expansion(headline: details[index]['title'], icon: details[index]['icon'], context: context,selection: index==0?false:true, data: details[index]['subtitle'], width: width*0.02);
                   }),
                 ),
+              ),
 
-              ///Redeem Now button
-              SliverToBoxAdapter(
+            ///Redeem Now button
+            SliverToBoxAdapter(
+              child: Padding(
+                padding:  EdgeInsets.symmetric(vertical:height*0.01,horizontal: width*0.025),
                 child: ElevatedButton(
                   onPressed: (){
                     setState(() {
@@ -159,77 +131,85 @@ class _ClaimRewardViewState extends State<ClaimRewardView> {
                     elevation: 0,
                     backgroundColor: Color.fromRGBO(0, 80, 157, 1),
                   ), child: Text('Redeem Now',style: TextStyle(fontSize: 16,color: Colors.white),),
+                ),
               )
-              ),
+            ),
 
-              SliverToBoxAdapter(
-                child:  Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: height*0.01,
-                    horizontal: width*0.01
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.check_circle_rounded,color: Colors.green,size: width*0.15,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Thank you!',style: TextStyle(fontSize: 16),),
-                              Text('Your order #BE12345 has been placed.'),
-                            ],
-                          )
-                        ],
-                      ),
-
-                      customContainer(
-                        borderColor: Colors.transparent,
-                        bRadius: width*0.01,
-                        vPadding: height*0.01,
-                        hPadding: width*0.02,
-                        child: Column(
+            ///Delivery description
+            isRedeemed?SliverToBoxAdapter(
+              child:  Container(
+                margin: EdgeInsets.symmetric(vertical:height*0.02,horizontal: width*0.02),
+                padding: EdgeInsets.symmetric(
+                  vertical: height*0.01,
+                  horizontal: width*0.01
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.check_circle_rounded,color: Colors.green,size: width*0.14,),
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          Text('Time placed: 00/00/0000 00:00',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),),
-                          SizedBox(height: height*0.01,),
-                          Text('Shipping',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),),
-
-                            Padding(
-                              padding:EdgeInsets.only(left: width*0.05,top: height*0.01),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Satish Kadam',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
-                                  Text('satishkadam@gmail.com'),
-                                  Text('+91 0000000000'),
-                                  Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-                                ],
-                              ),
-                            )
-                        ],),
-                      ),
-                      SizedBox(height: height*0.02,),
-                      customContainer(
-                        height: height*0.06,
-                        bRadius: 0,
-                        containerColor: Color.fromRGBO(255, 249,219, 1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.fire_truck_outlined,size: width*0.08,),
-                            Text('Arrives by April 3 to April 9th',style: TextStyle(fontSize: 16),)
+                            Text('Thank you!',style: TextStyle(fontSize: 16),),
+                            Text('Your order #BE12345 has been placed.'),
                           ],
-                        ),
-                      ),
-                      SizedBox(height: 50,)
-                    ],
-                  ),
-                )
+                        )
+                      ],
+                    ),
 
+                    customContainer(
+                      borderColor: Colors.transparent,
+                      bRadius: width*0.01,
+                      vPadding: height*0.01,
+                      hPadding: width*0.02,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        Text('Time placed: 00/00/0000 00:00',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),),
+                        SizedBox(height: height*0.01,),
+                        Text('Shipping',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),),
+
+                          Padding(
+                            padding:EdgeInsets.only(left: width*0.05,top: height*0.01),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Satish Kadam',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
+                                Text('satishkadam@gmail.com'),
+                                Text('+91 0000000000'),
+                                Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+                              ],
+                            ),
+                          )
+                      ],),
+                    ),
+
+                  ],
+                ),
               )
-            ],
-          ),
+
+            ):SliverToBoxAdapter(),
+
+            ///Arrival time and date
+            isRedeemed?SliverToBoxAdapter(
+              child: customContainer(
+
+                height: height*0.06,
+                bRadius: 0,
+                containerColor: Color.fromRGBO(255, 249,219, 1),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.fire_truck_outlined,size: width*0.08,),
+                    Text('Arrives by April 3 to April 9th',style: TextStyle(fontSize: 16),)
+                  ],
+                ),
+              ),
+            ):SliverToBoxAdapter(),
+            SliverToBoxAdapter(child: SizedBox(height: height*0.1,)),
+
+          ],
         ),
       ),
     );
@@ -253,7 +233,7 @@ Widget _expansion({required String headline,required IconData icon,required bool
       ),
       childrenPadding: EdgeInsets.all(12),
       showTrailingIcon: selection,
-      children:[ 
+      children:[
         Text(data
     //,style: textStyle14(context,color: Colors.grey
           ),
