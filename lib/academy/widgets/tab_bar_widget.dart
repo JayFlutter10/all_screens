@@ -28,7 +28,7 @@ class _TapBarWithTextState extends State<TapBarWithText> {
       height: widget.height*0.1,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          physics: NeverScrollableScrollPhysics(),
+          physics: ScrollPhysics(),
           shrinkWrap: true,
           itemCount: widget.data.length,
           itemBuilder: (context,index){

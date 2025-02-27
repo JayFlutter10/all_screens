@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 
-import '../widget/row_text_field_widget.dart';
+import '../../constants/widgets/row_text_field_widget.dart';
 import 'checkout_screen.dart';
 
 class SubmitDetailsScreen extends StatefulWidget {
@@ -39,9 +39,9 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
                       children: [
                         rowTextField(name: 'Name',width:width*0.03,height: height*0.05,controller:nameController,isManda: true),
                         SizedBox(height: height*0.02,),
-                        rowTextField(name: 'Mobile No.',width:width*0.03,height: height*0.05,controller:nameController,isManda: true),
+                        rowTextField(name: 'Mobile No.',width:width*0.03,height: height*0.05,controller:phoneController,isManda: true),
                         SizedBox(height: height*0.02,),
-                        rowTextField(name: 'Address',width:width*0.03,height: height*0.05,controller:nameController,isManda: true),
+                        rowTextField(name: 'Address',width:width*0.03,height: height*0.05,controller:addressController,isManda: true),
                         SizedBox(height: height*0.03,),
                         Text('Requirements',style: TextStyle(fontSize: 14,color: Colors.grey),),
                         SizedBox(height: height*0.02,),
