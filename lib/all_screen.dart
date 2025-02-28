@@ -21,9 +21,10 @@ class _AllScreenState extends State<AllScreen> {
     '/chart',
     '/submit_details_screen',
     '/custom_widgets_default_view',
+    '/vendor_list_view_screen',
   ];
   final List<String> nameOfPages=[
-    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart','Custom Widgets'
+    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart','Custom Widgets','Vendor List',
   ];
   @override
   Widget build(BuildContext context) {

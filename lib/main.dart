@@ -10,6 +10,7 @@ import 'package:side_bizbooster/packages/views/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/selected_package_screen.dart';
 import 'package:side_bizbooster/shorts/views/navigate_to_shorts.dart';
 import 'package:side_bizbooster/tandc_5X/View/terms_conditions.dart';
+import 'package:side_bizbooster/vendor/views/vendor_list_view_screen.dart';
 import 'academy/view/certificate_view.dart';
 import 'academy/view/live_webinar_view.dart';
 import 'academy/view/training_view.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/submit_details_screen':(context)=>SubmitDetailsScreen(),
         '/animated_circular_progress_indicator_view':(context)=>AnimatedCircularProgressIndicatorView(),
         '/custom_widgets_default_view':(context)=>CustomWidgetsDefaultView(),
+        '/vendor_list_view_screen':(context)=>VendorListViewScreen(),
       },
 
       debugShowCheckedModeBanner: false,

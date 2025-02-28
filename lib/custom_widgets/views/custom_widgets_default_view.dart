@@ -14,7 +14,7 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
    '/animated_circular_progress_indicator_view',
   ];
   final List<String> nameOfPages=[
-    'Custom_widgets'
+    'Custom_widgets',
   ];
   @override
   Widget build(BuildContext context) {

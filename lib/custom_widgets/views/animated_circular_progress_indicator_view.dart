@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 
 class AnimatedCircularProgressIndicatorView extends StatefulWidget {
    double? radius;
@@ -15,7 +14,6 @@ class AnimatedCircularProgressIndicatorView extends StatefulWidget {
 class _AnimatedCircularProgressIndicatorViewState extends State<AnimatedCircularProgressIndicatorView> {
   @override
   Widget build(BuildContext context) {
-
     final double height=MediaQuery.of(context).size.height;
     final double width=MediaQuery.of(context).size.width;
     return Scaffold(
