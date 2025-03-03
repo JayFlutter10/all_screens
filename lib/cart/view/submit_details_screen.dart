@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:side_bizbooster/cart/controller/button_controller.dart';
+import 'package:side_bizbooster/cart/view/fill_loader.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 
 import '../../constants/widgets/row_text_field_widget.dart';
@@ -16,6 +19,7 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
   final TextEditingController nameController=TextEditingController();
   final TextEditingController phoneController=TextEditingController();
   final TextEditingController addressController=TextEditingController();
+  final ButtonController controller=Get.put(ButtonController());
   @override
   Widget build(BuildContext context) {
 
@@ -45,7 +49,7 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
                         SizedBox(height: height*0.03,),
                         Text('Requirements',style: TextStyle(fontSize: 14,color: Colors.grey),),
                         SizedBox(height: height*0.02,),
-        
+
                       ],
                     )
               ),
@@ -83,7 +87,7 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
                 width: width,
                 child: ElevatedButton(
                   onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckoutScreen(serviceName: serviceName,)));
+                    Get.to(()=>CheckoutScreen(serviceName: serviceName));
                   },
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
@@ -92,6 +96,19 @@ class _SubmitDetailsScreenState extends State<SubmitDetailsScreen> {
                 ),
               ),
 
+              Container(
+                margin: EdgeInsets.symmetric(vertical: height*0.02),
+                width: width,
+                child: ElevatedButton(
+                  onPressed: (){
+                    Get.to(()=>FillLoader());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: Color.fromRGBO(0, 80, 157, 1),
+                  ), child: Text('On Completed',style: TextStyle(fontSize: 16,color: Colors.white),),
+                ),
+              ),
             ],
           ),
         ),

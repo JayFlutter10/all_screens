@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:side_bizbooster/Testing/Color/color_test_view.dart';
 import 'package:side_bizbooster/academy/view/video_academy_main.dart';
 import 'package:side_bizbooster/all_screen.dart';
 import 'package:side_bizbooster/cart/view/submit_details_screen.dart';
 import 'package:side_bizbooster/chart.dart';
 import 'package:side_bizbooster/custom_widgets/views/animated_circular_progress_indicator_view.dart';
+import 'package:side_bizbooster/custom_widgets/views/custom_tap_bar_widget.dart';
 import 'package:side_bizbooster/favourite/view/favourite_view_screen.dart';
 import 'package:side_bizbooster/packages/views/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/selected_package_screen.dart';
@@ -28,8 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return GetMaterialApp(
       initialRoute: '/',
       routes: {
         '/certificate_view': (context) => CertificateView(),
@@ -51,12 +52,11 @@ class MyApp extends StatelessWidget {
         '/custom_widgets_default_view':(context)=>CustomWidgetsDefaultView(),
         '/vendor_list_view_screen':(context)=>VendorListViewScreen(),
       },
-
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white
+          backgroundColor: Colors.grey.shade50
         ),
         fontFamily: 'Poppins',
         scaffoldBackgroundColor: Colors.white,

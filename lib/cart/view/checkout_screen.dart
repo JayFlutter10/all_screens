@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:side_bizbooster/cart/view/fill_loader.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 
 import '../../academy/widgets/tab_bar_widget.dart';
@@ -33,7 +34,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     customQtyController.dispose();
     super.dispose();
   }
+  List<dynamic> data=[
 
+    {'icon': Icons.wallet, 'title': 'Details'},
+    {'icon': Icons.shopping_bag_rounded, 'title': 'Payment'},
+    {'icon': Icons.check_circle_outline_rounded, 'title': 'Complete'},
+  ];
+  int stepCount = 0;
   @override
   Widget build(BuildContext context) {
     final double height=MediaQuery.of(context).size.height;
@@ -47,27 +54,24 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             children: [
               ///Tap Bar
               TapBarWithText(
-                height: height, data: [
-                {'icon': Icons.wallet, 'title': 'Details'},
-                {'icon': Icons.shopping_bag_rounded, 'title': 'Payment'},
-                {'icon': Icons.check_circle_outline_rounded, 'title': 'Complete'},
-              ], width: width, colors: [
+                height: height, data: data, width: width, colors: [
                 Color.fromRGBO(0, 80, 157, 1),Colors.white
               ], iconColors: [
                 Colors.white,Colors.grey
-              ],
+                ],
               ),
+
               SizedBox(
                 height: height*0.03,
               ),
-              
-              ///Banner
+
+              ///Banner Image
               customContainer(bRadius:height*0.02,
                 assetsImg: 'assets/cart/img/cart_banner.png',
                 height: height*0.2,
               ),
               SizedBox(height: height*0.01,),
-              
+
               ///Franchise Description and Ratings
               customContainer(bRadius: width*0.04,
                 vPadding: height*0.01,
@@ -78,7 +82,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                          Text(widget.serviceName,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
+                        Text(widget.serviceName,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
                         customContainer(
                           hPadding: width*0.02,
                           bRadius: height*0.01,
@@ -155,16 +159,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     Row(
                       children: [
                         customContainer(bRadius:height*0.01,
-                        vPadding: height*0.002,
-                        hPadding: width*0.01,
-                        containerColor: Color.fromRGBO(0, 80, 157,1),
-                        child: Row(
-                          children: [
-                            Text('4.5',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.white),),
-                            SizedBox(width: width*0.01,),
-                            Icon(Icons.star_border,color: Colors.white,size: width*0.05,),
-                          ],
-                        )
+                            vPadding: height*0.002,
+                            hPadding: width*0.01,
+                            containerColor: Color.fromRGBO(0, 80, 157,1),
+                            child: Row(
+                              children: [
+                                Text('4.5',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.white),),
+                                SizedBox(width: width*0.01,),
+                                Icon(Icons.star_border,color: Colors.white,size: width*0.05,),
+                              ],
+                            )
                         ),
                         SizedBox(width: width*0.01,),
                         Text('& 55 Reviews',style: TextStyle(color: Colors.grey),),
@@ -185,39 +189,82 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
               ),
               SizedBox(height: height*0.01,),
-              
-              ///Preferable Time 
+
+              ///Preferable Time
               customContainer(bRadius: width*0.04,
-              child: ListTile(
-                title: Text('Preferable time',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
-                subtitle: Text('Choose a preferred time, and we will try our best to deliver it',style: TextStyle(fontSize: 12),),
-                trailing: customContainer(vPadding:height*0.005,hPadding: width*0.07,bRadius: width*0.05,child: Text('Select',style: TextStyle(fontSize: 16,color: Colors.white),),containerColor: Color.fromRGBO(0,80, 157, 1),onTap: (){}),
-              ),
+                child: ListTile(
+                  title: Text('Preferable time',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
+                  subtitle: Text('Choose a preferred time, and we will try our best to deliver it',style: TextStyle(fontSize: 12),),
+                  trailing: customContainer(vPadding:height*0.005,hPadding: width*0.07,bRadius: width*0.05,child: Text('Select',style: TextStyle(fontSize: 16,color: Colors.white),),containerColor: Color.fromRGBO(0,80, 157, 1),onTap: (){}),
+                ),
               ),
               SizedBox(height: height*0.02,),
 
               ///Franchise Details
               customContainer(bRadius: width*0.04,
                 vPadding: height*0.015,hPadding: width*0.02,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.store_outlined,size: height*0.026,),
-                      SizedBox(width: width*0.02,),
-                      Text('Franchise Details',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),)
-                    ],
-                  ),
-                  Padding(
-                    padding:  EdgeInsets.all(width*0.05),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                child: Column(
+                  children: [
+                    Row(
                       children: [
-                        Text('Mansi Mulik'),
-                        Row(
+                        Icon(Icons.store_outlined,size: height*0.026,),
+                        SizedBox(width: width*0.02,),
+                        Text('Franchise Details',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),)
+                      ],
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.all(width*0.05),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Mansi Mulik'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('+91 911261845'),
+                              Row(
+                                children: [
+                                  Icon(Icons.call,color: Color.fromRGBO(0, 80, 157, 1),),
+                                  SizedBox(width: width*0.03,),
+                                  Icon(Icons.mail_outline_rounded,color: Color.fromRGBO(0, 80, 157, 1)),
+                                  SizedBox(width: width*0.03,),
+                                  Icon(Icons.chat_rounded,color: Color.fromRGBO(0, 80, 157, 1))
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),),
+              SizedBox(height: height*0.02,),
+
+              ///Customer Details
+              customContainer(bRadius: width*0.04,vPadding: height*0.015,hPadding: width*0.02,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      Icon(Icons.person_outlined,size: height*0.026,),
+                      SizedBox(width: width*0.02,),
+                      Text('Customer Details',style: TextStyle(fontWeight: FontWeight.w500),),
+                    ],),
+                    customContainer(
+                        margin: height*0.01,
+                        bRadius: width*0.02,
+                        vPadding: height*0.005,
+                        hPadding: width*0.02,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('+91 911261845'),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Satish Kadam',style: TextStyle(fontSize: 16),),
+                                Text('+91 911261845'),
+                              ],
+                            ),
                             Row(
                               children: [
                                 Icon(Icons.call,color: Color.fromRGBO(0, 80, 157, 1),),
@@ -226,79 +273,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 SizedBox(width: width*0.03,),
                                 Icon(Icons.chat_rounded,color: Color.fromRGBO(0, 80, 157, 1))
                               ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),),
-              SizedBox(height: height*0.02,),
-
-              ///Customer Details
-              customContainer(bRadius: width*0.04,vPadding: height*0.015,hPadding: width*0.02,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(children: [
-                    Icon(Icons.person_outlined,size: height*0.026,),
-                    SizedBox(width: width*0.02,),
-                    Text('Customer Details',style: TextStyle(fontWeight: FontWeight.w500),),
-                  ],),
-                  customContainer(
-                    margin: height*0.01,
-                      bRadius: width*0.02,
-                  vPadding: height*0.005,
-                  hPadding: width*0.02,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Satish Kadam',style: TextStyle(fontSize: 16),),
-                          Text('+91 911261845'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.call,color: Color.fromRGBO(0, 80, 157, 1),),
-                          SizedBox(width: width*0.03,),
-                          Icon(Icons.mail_outline_rounded,color: Color.fromRGBO(0, 80, 157, 1)),
-                          SizedBox(width: width*0.03,),
-                          Icon(Icons.chat_rounded,color: Color.fromRGBO(0, 80, 157, 1))
-                        ],
-                      ),
-                    ],
-                  )
-                  ),
-                  Text('Saved Address'),
-                  customContainer(
-                      margin: height*0.01,
-                      bRadius: width*0.02,
-                      vPadding: height*0.005,
-                      hPadding: width*0.02,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(Icons.circle_outlined,color: Colors.red,),
-                          SizedBox(width: width*0.01,),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Satish Kadam',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
-                                Text('Lorem Ipsum Lorem Ipsum Lorem Ipsum',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),),
-                              ],
                             ),
-                          ),
-                          InkWell(
-                              onTap: (){},
-                              child: Text('+Add New Address',style: TextStyle(fontSize: 14,color: Colors.red),))
-                        ],
-                      )
+                          ],
+                        )
+                    ),
+                    Text('Saved Address'),
+                    customContainer(
+                        margin: height*0.01,
+                        bRadius: width*0.02,
+                        vPadding: height*0.005,
+                        hPadding: width*0.02,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.circle_outlined,color: Colors.red,),
+                            SizedBox(width: width*0.01,),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Satish Kadam',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                                  Text('Lorem Ipsum Lorem Ipsum Lorem Ipsum',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),),
+                                ],
+                              ),
+                            ),
+                            InkWell(
+                                onTap: (){},
+                                child: Text('+Add New Address',style: TextStyle(fontSize: 14,color: Colors.red),))
+                          ],
+                        )
                     ),
                   ],
                 ),
@@ -307,45 +311,45 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
               ///Cart Summary
               customContainer(bRadius: width*0.04,vPadding: height*0.015,hPadding: width*0.04,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.shopping_cart_outlined,size: height*0.026,),
-                            SizedBox(width: width*0.02,),
-                            Text('Cart Summary',style: TextStyle(fontWeight: FontWeight.w500),),
-                          ],
-                        ),
-                        SizedBox(height: height*0.02,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Amazon Merchant Onboarding',),
-                            Text('(1)'),
-                            Text('₹0,000',style: TextStyle(fontSize: 16,color: Colors.green,fontWeight: FontWeight.w500)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Text('Merchant Onboarding',style: TextStyle(color: Colors.grey),),
-                    SizedBox(height: height*0.02,),
-                    Divider(color: Colors.grey.shade200,),
-                    SizedBox(height: height*0.02,),
-                    _rowText(text1: 'Sub Total', text2: '₹0,000',isLast: false),
-                    _rowText(text1: 'Discount', text2: '₹0,000',isLast: false),
-                    _rowText(text1: 'Campaign Discount', text2: '₹0,000',isLast: false),
-                    _rowText(text1: 'VAT', text2: '₹0,000',isLast: false),
-                    SizedBox(height: height*0.02,),
-                    Divider(color: Colors.grey.shade200,),
-                    SizedBox(height: height*0.02,),
-                    _rowText(text1: 'Grand Total', text2: '₹0,000',isLast: true),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.shopping_cart_outlined,size: height*0.026,),
+                              SizedBox(width: width*0.02,),
+                              Text('Cart Summary',style: TextStyle(fontWeight: FontWeight.w500),),
+                            ],
+                          ),
+                          SizedBox(height: height*0.02,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Amazon Merchant Onboarding',),
+                              Text('(1)'),
+                              Text('₹0,000',style: TextStyle(fontSize: 16,color: Colors.green,fontWeight: FontWeight.w500)),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text('Merchant Onboarding',style: TextStyle(color: Colors.grey),),
+                      SizedBox(height: height*0.02,),
+                      Divider(color: Colors.grey.shade200,),
+                      SizedBox(height: height*0.02,),
+                      _rowText(text1: 'Sub Total', text2: '₹0,000',isLast: false),
+                      _rowText(text1: 'Discount', text2: '₹0,000',isLast: false),
+                      _rowText(text1: 'Campaign Discount', text2: '₹0,000',isLast: false),
+                      _rowText(text1: 'VAT', text2: '₹0,000',isLast: false),
+                      SizedBox(height: height*0.02,),
+                      Divider(color: Colors.grey.shade200,),
+                      SizedBox(height: height*0.02,),
+                      _rowText(text1: 'Grand Total', text2: '₹0,000',isLast: true),
 
-                  ],
-                )
+                    ],
+                  )
               ),
               SizedBox(height: height*0.02,),
 
@@ -353,26 +357,27 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               Container(
                   padding: EdgeInsets.symmetric(vertical:height*0.01 ,horizontal: width*0.04,),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(8, 208, 8, 0.1),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(width*0.04),bottomRight: Radius.circular(width*0.04))
+                      color: Color.fromRGBO(8, 208, 8, 0.1),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(width*0.04),bottomRight: Radius.circular(width*0.04))
                   ),
-              child: Column(
-                children: [
-                  RichText(text: TextSpan(
-                    text: 'You Will Earn',style: TextStyle(fontSize: 14,color: Colors.green,fontWeight: FontWeight.w500),
+                  child: Column(
                     children: [
-                      TextSpan(
-                        text: ' ₹000 ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
-                      ),
-                      TextSpan(
-                        text: 'Commission'
-                      ),
-                    ]
-                  )),
-                  Text('From This Product',style: TextStyle(fontSize: 14,color: Colors.green,fontWeight: FontWeight.w500),)
-                ],
+                      RichText(text: TextSpan(
+                          text: 'You Will Earn',style: TextStyle(fontSize: 14,color: Colors.green,fontWeight: FontWeight.w500),
+                          children: [
+                            TextSpan(
+                              text: ' ₹000 ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
+                            ),
+                            TextSpan(
+                                text: 'Commission'
+                            ),
+                          ]
+                      )),
+                      Text('From This Product',style: TextStyle(fontSize: 14,color: Colors.green,fontWeight: FontWeight.w500),)
+                    ],
+                  )
               )
-              )
+
             ],
           ),
         ),

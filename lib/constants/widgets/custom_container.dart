@@ -23,6 +23,8 @@ Widget customContainer({
   double? margin,
   double? hPadding,
   double? vPadding,
+  double? hMargin,
+  double? vMargin,
   String? assetsImg,
   String? networkImg,
   Color? shadowColor,
@@ -33,12 +35,12 @@ Widget customContainer({
   VoidCallback? onTap,
 }){
   return InkWell(
+    highlightColor: Colors.white,
     onTap: onTap,
     child: Container(
       height: height,
       width: width,
-
-      margin: EdgeInsets.all(margin ?? 0.0),
+      margin: EdgeInsets.symmetric(vertical:vMargin??0,horizontal: hMargin??0),
       padding: EdgeInsets.symmetric(horizontal: hPadding??0.0, vertical: vPadding ??0.0),
       decoration: BoxDecoration(
         color: gradient == null ? containerColor ?? Colors.white : null,
@@ -48,7 +50,7 @@ Widget customContainer({
         image: (networkImg != null)
             ? DecorationImage(image: NetworkImage(networkImg), fit: BoxFit.cover,opacity: imageOpacity??1.0)
             : (assetsImg != null)
-            ? DecorationImage(image: AssetImage(assetsImg), fit: BoxFit.cover,opacity:imageOpacity??1.0)
+            ? DecorationImage(image: AssetImage(assetsImg,), fit: BoxFit.cover,opacity:imageOpacity??1.0)
             : null,
 
         boxShadow: [

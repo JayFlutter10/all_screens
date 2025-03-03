@@ -44,7 +44,6 @@ class _CertificateViewState extends State<CertificateView> {
             crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search,),
                 hintText: 'Search by name',

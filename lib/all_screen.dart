@@ -37,12 +37,12 @@ class _AllScreenState extends State<AllScreen> {
           child: Column(
             children: [
               GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                  itemCount: name.length,
                  shrinkWrap: true,
                  physics: NeverScrollableScrollPhysics(),
                  itemBuilder: (context,index){
-                return customContainer(bRadius: width*0.5,containerColor: Colors.blue.shade800,onTap: (){
+                return customContainer(bRadius: width*0.1,containerColor: Colors.blue.shade800,onTap: (){
                 Navigator.pushNamed(context, name[index].toString());
                 }
                 ,child: Center(child: Text(nameOfPages[index].toString(),style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),textAlign: TextAlign.center,softWrap: true,maxLines: 2,),),
