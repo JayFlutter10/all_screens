@@ -8,6 +8,7 @@ import 'package:side_bizbooster/chart.dart';
 import 'package:side_bizbooster/custom_widgets/views/animated_circular_progress_indicator_view.dart';
 import 'package:side_bizbooster/custom_widgets/views/custom_tap_bar_widget.dart';
 import 'package:side_bizbooster/favourite/view/favourite_view_screen.dart';
+import 'package:side_bizbooster/my_kyc/views/my_kyc_screen.dart';
 import 'package:side_bizbooster/packages/views/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/selected_package_screen.dart';
 import 'package:side_bizbooster/shorts/views/navigate_to_shorts.dart';
@@ -51,6 +52,8 @@ class MyApp extends StatelessWidget {
         '/animated_circular_progress_indicator_view':(context)=>AnimatedCircularProgressIndicatorView(),
         '/custom_widgets_default_view':(context)=>CustomWidgetsDefaultView(),
         '/vendor_list_view_screen':(context)=>VendorListViewScreen(),
+        '/my_kyc_screen':(context)=>MyKycScreen(),
+
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

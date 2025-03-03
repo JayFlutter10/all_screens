@@ -54,7 +54,6 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
                             _textWidgetTabBar(bRadius: width*0, data: 'data4', height: height*0.3, width: width),
                             Container(height: height*0.5,)
                           ],
-
                         )
                       )
                     );
