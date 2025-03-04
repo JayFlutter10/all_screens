@@ -69,6 +69,8 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
                   },
                   child: Text('Circular Progress Indicator',style: TextStyle(color: Colors.white,fontSize: 18),maxLines: 2,)
               ),
+
+             
             ],
           ),
         ),

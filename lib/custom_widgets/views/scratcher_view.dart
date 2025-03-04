@@ -33,7 +33,7 @@ class _ScratcherViewState extends State<ScratcherView> {
                 },
                 image: Image.asset('assets/scratch/img/gray.png'),
                 color: Color.fromRGBO(0, 80, 157, 1),
-                  brushSize: 60,
+                  brushSize: 100,
                   child: Center(
                 child: Text(number)
               )),
