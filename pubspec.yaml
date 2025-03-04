@@ -40,6 +40,8 @@ dependencies:
   youtube_player_flutter: ^9.1.1
   linear_progress_bar: ^1.1.3
   palette_generator: ^0.3.3+6
+  scratcher: ^2.5.0
+  random_string: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,7 @@ flutter:
     - assets/rewards/img/
     - assets/cart/img/
     - assets/vendor/img/
+    - assets/scratch/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:side_bizbooster/custom_widgets/views/animated_circular_progress_indicator_view.dart';
 import 'package:side_bizbooster/custom_widgets/views/custom_tap_bar_widget.dart';
+import 'package:side_bizbooster/custom_widgets/views/scratcher_view.dart';
 
 import '../../constants/widgets/custom_container.dart';
 
@@ -19,6 +20,7 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
   final List<String> nameOfPages=[
     'Circular Progress indicator',
     'Tab Bar',
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,13 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
                   },
                   child: Text('Tab Bar',style: TextStyle(color: Colors.white,fontSize: 18),)
               ),
-
+              customContainer(bRadius: 50,width: 200,
+                  vPadding: 10,hPadding: 10,containerColor: Colors.blue,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ScratcherView()));
+                  },
+                  child: Text('Circular Progress Indicator',style: TextStyle(color: Colors.white,fontSize: 18),maxLines: 2,)
+              ),
             ],
           ),
         ),
