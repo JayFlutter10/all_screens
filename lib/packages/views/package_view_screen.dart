@@ -145,7 +145,7 @@ class _PackageViewScreenState extends State<PackageViewScreen> {
                       bRadius: 15,
                       vPadding: 10,
                       hPadding: 10,
-                      margin: 15,
+                      vMargin: height*0.01,
                       containerColor: Color.fromRGBO(249, 249, 249, 1),
                       borderColor: Colors.grey.shade300,
                       child: Column(
@@ -153,7 +153,7 @@ class _PackageViewScreenState extends State<PackageViewScreen> {
                         children: [
                           Text(
                             currentData[index]['title'].toString(),
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(),
                           ),
                           ListView.builder(
                             padding: EdgeInsets.only(left: width*0.005,top: height*0.005),
@@ -178,7 +178,7 @@ class _PackageViewScreenState extends State<PackageViewScreen> {
                                                 .split(' ')
                                                 .take(2)
                                                 .join(' ')} ', // Extract first two words and add space
-                                            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
+                                            style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
                                           ),
 
                                           TextSpan(

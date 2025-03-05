@@ -16,7 +16,7 @@ class DataFranchise{
     }
   ];
   final List<dynamic> franchiseName=[
-    'Franchise','Super Franchise','Premium Franchise'
+    'Franchise','Super\nFranchise','Premium\nFranchise'
   ];
   final List<dynamic> franchise=[
     {
@@ -52,48 +52,6 @@ class DataFranchise{
           'icon':Icons.account_balance_wallet
         },
       ],
-    },
-    {
-      'title':'Dedicated Franchise Support',
-      'subtitle':[
-        {
-          'data': '3 - 6 hours response time for quick issue resolution',
-          'icon':Icons.support_agent
-        },
-        {
-          'data':'Full support system to help you succeed',
-          'icon':Icons.contact_support
-        },
-        {
-          'data':'Never feel stuck! Get expert guidance whenever you need it',
-          'icon':Icons.person_3
-        }
-      ],
-    },
-    {
-      'title':'Why Choose This Opportunity?',
-      'subtitle':[
-        {
-          'data':'High earnings potential',
-          'icon':CupertinoIcons.money_dollar_circle_fill
-        },
-        {
-          'data':'Smart tools',
-          'icon':Icons.laptop
-        },
-        {
-          'data':'Wider business reach',
-          'icon':Icons.person
-        },
-        {
-          'data':'Revenue-based income',
-          'icon':Icons.lightbulb_outline
-        },
-        {
-          'data':'Dedicated support',
-          'icon':Icons.support_agent
-        },
-      ]
     },
   ];
   final List<dynamic> superFranchise=[
@@ -135,48 +93,6 @@ class DataFranchise{
         },
       ],
     },
-    {
-      'title':'Dedicated Franchise Support',
-      'subtitle':[
-        {
-          'data': '3 - 6 hours response time for quick issue resolution',
-          'icon':Icons.support_agent
-        },
-        {
-          'data':'Priority Access – Get early entry into new franchise opportunities',
-          'icon':Icons.contact_support
-        },
-        {
-          'data':'Never feel stuck! Get expert guidance whenever you need it',
-          'icon':Icons.person_3
-        }
-      ],
-    },
-    {
-      'title':'Why Choose This Opportunity?',
-      'subtitle':[
-        {
-          'data':'Franchise & team-based income model',
-          'icon':CupertinoIcons.money_dollar_circle_fill
-        },
-        {
-          'data':'Early access',
-          'icon':Icons.laptop
-        },
-        {
-          'data':'Revenue-based income',
-          'icon':Icons.person
-        },
-        {
-          'data':'Advanced marketing tools',
-          'icon':Icons.lightbulb_outline
-        },
-        {
-          'data':'Faster support',
-          'icon':Icons.support_agent
-        },
-      ]
-    },
   ];
   final List<dynamic> premiumFranchise=[
     {
@@ -216,66 +132,6 @@ class DataFranchise{
           'icon':Icons.money
         },
       ],
-    },
-    {
-      'title':'Dedicated Franchise Support',
-      'subtitle':[
-        {
-          'data': '24-hour response time for quick issue resolution',
-          'icon':Icons.support_agent
-        },
-        {
-          'data':'Full support system to help you succeed',
-          'icon':Icons.contact_mail
-        },
-        {
-          'data':'Instant Support – Get immediate assistance whenever needed',
-          'icon':Icons.person_3
-        },
-        {
-          'data':'Dedicated Relationship Manager Personalized guidance & account management',
-          'icon':CupertinoIcons.phone_fill_arrow_up_right
-        },
-
-        {
-          'data':'Dedicated Campaigns – Exclusive marketing efforts managed by BizBooster2x’s team',
-          'icon':Icons.call
-        },
-        {
-          'data':'Co-Branded Events – Premium access to collaborative campaigns & localized events.',
-          'icon':Icons.stacked_line_chart_rounded
-        },
-        {
-          'data':'Boost brand visibility & attract more leads effortlessly!',
-          'icon':CupertinoIcons.graph_square_fill
-        },
-
-      ],
-    },
-    {
-      'title':'Why Choose This Opportunity?',
-      'subtitle':[
-        {
-          'data':'High earnings potential',
-          'icon':CupertinoIcons.money_dollar_circle_fill
-        },
-        {
-          'data':'Smart tools',
-          'icon':Icons.laptop
-        },
-        {
-          'data':'Operate at scale',
-          'icon':Icons.person
-        },
-        {
-          'data':'Advanced marketing',
-          'icon':Icons.lightbulb_outline
-        },
-        {
-          'data':'Tailored dashboards',
-          'icon':Icons.indeterminate_check_box_outlined
-        },
-      ]
     },
   ];
   final List<dynamic> learnMore=[

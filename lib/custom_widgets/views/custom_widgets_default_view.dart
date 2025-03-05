@@ -67,10 +67,9 @@ class _CustomWidgetsDefaultViewState extends State<CustomWidgetsDefaultView> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>ScratcherView()));
                   },
-                  child: Text('Circular Progress Indicator',style: TextStyle(color: Colors.white,fontSize: 18),maxLines: 2,)
+                  child: Text('Scratch Card',style: TextStyle(color: Colors.white,fontSize: 18),maxLines: 2,)
               ),
 
-             
             ],
           ),
         ),

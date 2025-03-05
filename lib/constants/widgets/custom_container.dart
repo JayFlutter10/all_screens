@@ -14,6 +14,7 @@ class _CustomContainerState extends State<CustomContainer> {
   }
 }
 Widget customContainer({
+  Key? key,
   double? height,
   double? imageOpacity,
   double? width,
@@ -38,6 +39,7 @@ Widget customContainer({
     highlightColor: Colors.white,
     onTap: onTap,
     child: Container(
+      key: key,
       height: height,
       width: width,
       margin: EdgeInsets.symmetric(vertical:vMargin??0,horizontal: hMargin??0),

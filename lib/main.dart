@@ -9,8 +9,10 @@ import 'package:side_bizbooster/custom_widgets/views/animated_circular_progress_
 import 'package:side_bizbooster/custom_widgets/views/custom_tap_bar_widget.dart';
 import 'package:side_bizbooster/favourite/view/favourite_view_screen.dart';
 import 'package:side_bizbooster/my_kyc/views/my_kyc_screen.dart';
+import 'package:side_bizbooster/packages/views/new_package_screen.dart';
 import 'package:side_bizbooster/packages/views/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/selected_package_screen.dart';
+import 'package:side_bizbooster/service/views/service_details_screen.dart';
 import 'package:side_bizbooster/shorts/views/navigate_to_shorts.dart';
 import 'package:side_bizbooster/tandc_5X/View/terms_conditions.dart';
 import 'package:side_bizbooster/vendor/views/vendor_list_view_screen.dart';
@@ -53,7 +55,8 @@ class MyApp extends StatelessWidget {
         '/custom_widgets_default_view':(context)=>CustomWidgetsDefaultView(),
         '/vendor_list_view_screen':(context)=>VendorListViewScreen(),
         '/my_kyc_screen':(context)=>MyKycScreen(),
-
+        '/service_details_screen':(context)=>ServiceDetailsScreen(),
+        '/new_package_screen':(context)=>NewPackageScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
