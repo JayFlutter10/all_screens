@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scratcher/widgets.dart';
-import 'package:side_bizbooster/custom_widgets/views/offer_package_screen.dart';
+import 'package:side_bizbooster/packages/views/offer_package_screen.dart';
 
 import '../../constants/widgets/custom_container.dart';
 
@@ -58,7 +58,10 @@ class _ScratchCuponScreenState extends State<ScratchCuponScreen> {
                                     bRadius:height*2,width: width*0.52,height: height*0.24,
                                   child: InkWell(
                                     onTap: (){
-                                      Get.to(()=>OfferPackageScreen());
+                                      isScratched?Get.to(()=>OfferPackageScreen()):ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Center(child: Text('Scratch the card first',style: TextStyle(fontSize: 18),)),
+                                          backgroundColor: Color.fromRGBO(0, 80, 157, 1),
+                                        ),);
                                     },
                                     child: Column(
                                       children: [

@@ -63,13 +63,14 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
       appBar: AppBar(title: Text('Package'),),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/package/bgImg/bkgImg.jpg',),fit: BoxFit.fill,opacity: 1),
+          image: DecorationImage(image: AssetImage('assets/package/bgImg/bkgImg.jpg',),fit: BoxFit.fill,opacity: 0.5),
         ),
         child: SingleChildScrollView(
           child: Padding(
             padding:  EdgeInsets.symmetric(horizontal: width*0.02),
             child: Column(
               children: [
+                ///Row for All Franchise
                 customContainer(
                   vPadding: height*0.01,
                   vMargin: height*0.02,
@@ -84,25 +85,24 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                           selection=0;
                           franchiseTheme=Colors.blue;
                         });
-                      }, color: Colors.blue, context: context, selection: selection),
+                      }, color: Colors.blue, context: context, selection: selection, backgroundColor: selection==0?Colors.blue.shade50:Colors.white),
                       _dash(context: context),
                       _circleAvatarFranchise(franchiseName: 'Super\nFranchise', onTap: (){
                         setState(() {
                           selection=1;
                           franchiseTheme=Color.fromRGBO(45, 129, 0, 1);});
-                      } ,color: Color.fromRGBO(45, 129, 0, 1), context: context, selection: selection),
+                      } ,color: Color.fromRGBO(45, 129, 0, 1), context: context, selection: selection, backgroundColor: selection==1?Color.fromRGBO(45, 129, 0, 0.1):Colors.white),
                       _dash(context: context),
                       _circleAvatarFranchise( franchiseName: 'Premium\nFranchise', onTap: (){
                         setState(() {
                           selection=2;
                           franchiseTheme=Color.fromRGBO(168, 53, 241, 1);
                         });
-                      }, color: Color.fromRGBO(168, 53, 241, 1), context: context, selection: selection),
+                      }, color: Color.fromRGBO(168, 53, 241, 1), context: context, selection: selection, backgroundColor: selection==2?Color.fromRGBO(168, 53, 241, 0.1):Colors.white),
 
                     ],
                   ),
                 ),
-          
                 ///Franchise Details
                 customContainer(bRadius: width*0.04, vPadding: height*0.01,
                     vMargin: height*0.02,
@@ -381,10 +381,7 @@ Widget _dash({required context}){
   final double height=MediaQuery.of(context).size.height;
   return Row(
     children: [
-      customContainer(bRadius: 0,
-          height: height*0.003,width: width*0.1,containerColor: Colors.black
-      ),
-      Icon(Icons.arrow_forward_outlined)
+      Image.asset('assets/package/bgImg/arrow.png',width: width*0.17,),
     ],
   );
 }
@@ -396,9 +393,8 @@ Widget _columnBenefits({required IconData icon,required String text,required Col
     ],
   );
 }
-Widget _circleAvatarFranchise({required Color color,required String franchiseName,required VoidCallback onTap,required context,required int selection}){
+Widget _circleAvatarFranchise({required Color backgroundColor,required Color color,required String franchiseName,required VoidCallback onTap,required context,required int selection}){
   final double width=MediaQuery.of(context).size.width;
-  final double height=MediaQuery.of(context).size.height;
   return Column(
     children: [
       Row(
@@ -406,6 +402,7 @@ Widget _circleAvatarFranchise({required Color color,required String franchiseNam
           InkWell(
             onTap: onTap,
             child: customContainer(
+              containerColor: backgroundColor,
               bRadius: width*0.1,
               borderColor: color,
               height: 65,width: 65

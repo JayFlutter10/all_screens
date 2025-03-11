@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../../constants/widgets/custom_container.dart';
-import '../widgets/data_franchise.dart';
+import '../../../constants/widgets/custom_container.dart';
+import '../../widgets/data_franchise.dart';
 
 class PackageViewScreen extends StatefulWidget {
   const PackageViewScreen({super.key});

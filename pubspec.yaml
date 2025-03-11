@@ -30,8 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-#  google_fonts: ^6.2.1
-#  path_provider: ^2.1.5
+  google_fonts: ^6.2.1
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   fl_chart: ^0.70.2
@@ -75,6 +74,7 @@ flutter:
     - assets/cart/img/
     - assets/vendor/img/
     - assets/scratch/img/
+    - assets/offline_event/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -87,12 +87,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-     - family: Poppins
-       fonts:
-         - asset: fonts/Poppins-Regular.ttf
-         - asset: fonts/Poppins-Medium.ttf
-         - asset: fonts/Poppins-Bold.ttf
+#  fonts:
+#     - family: Poppins
+#       fonts:
+#         - asset: fonts/Poppins-Regular.ttf
+#         - asset: fonts/Poppins-Medium.ttf
+#         - asset: fonts/Poppins-Bold.ttf
 
   #   - family: Trajan Pro
   #     fonts:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/widgets/custom_container.dart';
-import '../../packages/widgets/data_franchise.dart';
+import '../widgets/data_franchise.dart';
 
 class OfferPackageScreen extends StatefulWidget {
   const OfferPackageScreen({super.key});
@@ -56,39 +56,6 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
           padding:  EdgeInsets.symmetric(horizontal: width*0.02),
           child: Column(
             children: [
-              customContainer(
-                vPadding: height*0.01,
-                vMargin: height*0.02,
-                hMargin: width*0.01,
-                hPadding: width*0.02,
-                bRadius: width*0.02,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _circleAvatarFranchise( franchiseName: 'Franchise\n', onTap: (){
-                      setState(() {
-                        selection=0;
-                        franchiseTheme=Colors.blue;
-                      });
-                    }, color: Colors.blue, context: context, selection: selection),
-                    _dash(context: context),
-                    _circleAvatarFranchise(franchiseName: 'Super\nFranchise', onTap: (){
-                      setState(() {
-                        selection=1;
-                        franchiseTheme=Color.fromRGBO(45, 129, 0, 1);});
-                    } ,color: Color.fromRGBO(45, 129, 0, 1), context: context, selection: selection),
-                    _dash(context: context),
-                    _circleAvatarFranchise( franchiseName: 'Premium\nFranchise', onTap: (){
-                      setState(() {
-                        selection=2;
-                        franchiseTheme=Color.fromRGBO(168, 53, 241, 1);
-                      });
-                    }, color: Color.fromRGBO(168, 53, 241, 1), context: context, selection: selection),
-
-                  ],
-                ),
-              ),
-
               ///Franchise Details
               Column(
                 children: [

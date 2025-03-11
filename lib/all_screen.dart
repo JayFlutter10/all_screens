@@ -25,9 +25,10 @@ class _AllScreenState extends State<AllScreen> {
     '/my_kyc_screen',
     '/service_details_screen',
     '/new_package_screen',
+    '/offline_event_screen',
   ];
   final List<String> nameOfPages=[
-    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart','Custom Widgets','Vendor List','My Kyc Screen','Service Screen','New Package Screen'
+    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart','Custom Widgets','Vendor List','My Kyc Screen','Service Screen','New Package Screen','Offline Event Screen'
   ];
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _AllScreenState extends State<AllScreen> {
                 return customContainer(bRadius: width*0.1,containerColor: Colors.blue.shade800,onTap: (){
                 Navigator.pushNamed(context, name[index].toString());
                 }
-                ,child: Center(child: Text(nameOfPages[index].toString(),style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),textAlign: TextAlign.center,softWrap: true,maxLines: 2,),),
+                ,child: Center(child: Text(nameOfPages[index].toString(),style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500),textAlign: TextAlign.center,softWrap: true,maxLines: 2,),),
                 );
               }),
             ],
