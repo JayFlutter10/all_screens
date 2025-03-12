@@ -15,8 +15,14 @@ class DataFranchise{
       'value':'Recruit 10 Super Franchises to become a Premium Franchise.'
     }
   ];
+  final List<dynamic> franchiseUpgradeTerms=[
+    '','Recruit 10 GPs to become a Super Franchise.','When your appointed GPs recruit 10 more, you become a Premium Franchise.'
+  ];
+  final List<dynamic> franchiseNameAbbr=[
+    'GB','SGP','PGP'
+  ];
   final List<dynamic> franchiseName=[
-    'Franchise','Super\nFranchise','Premium\nFranchise'
+    'BizBooster Growth Partner','Super Growth Partner','Premium Growth Partner'
   ];
   final List<dynamic> franchise=[
     {

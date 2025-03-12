@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:side_bizbooster/constants/style/text_styles.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 import 'package:side_bizbooster/packages/views/scratch_cupon_screen.dart';
 
@@ -116,12 +117,13 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CircleAvatar(radius: width*0.1,),
-                          SizedBox(width: width*0.02,),
+                          SizedBox(width: width*0.01,),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(dataFranchise.franchiseName[selection],style: TextStyle(fontSize: 20,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
+                                Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: TextStyle(fontSize: 16,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
                                 selection==0?Text('₹7,00,000 '):Text('Recruit 10 franchises to become a Super Franchise.',style: TextStyle(fontSize: 12,color: Colors.grey),textAlign: TextAlign.end,),
                               ],
                             ),
@@ -224,16 +226,11 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     children: [
                       Text(
                         'Assured Earnings',
-                        style: TextStyle(
-                            fontSize: 16,color: Colors.white
-                        ),
+                        style: textStyle18(context,color: Colors.white)
                       ),
                       Text(
-                        ' ₹30,000 – ₹50,000/month',
-                        style: TextStyle(
-                            fontSize: 16,color: Colors.white,
-                            fontWeight: FontWeight.bold
-                        ),
+                        dataFranchise.assuredLearning[selection].toString(),
+                        style: textStyle16(context,color: Colors.white)
                       ),
                     ],
                   ),
@@ -244,11 +241,15 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                 Row(
                   key: _benefitsKey,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Franchise',style: TextStyle(fontSize: 18,color: franchiseTheme,fontWeight: FontWeight.w500),),
-                    Text(' Benefits',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),)
+                    Text(dataFranchise.franchiseName[selection].toString(),style: textStyle20(context,color: franchiseTheme),),
+                    Text(' Benefits',style: textStyle20(context),)
                   ],
                 ),
+                SizedBox(height: height*0.01,),
+                Text(dataFranchise.franchiseUpgradeTerms[selection].toString(),textAlign: TextAlign.center,style: textStyle16(context,color: franchiseTheme),),
+                SizedBox(height: height*0.01,),
 
                 ///Franchise Benefits 3 icons
                 customContainer(bRadius: 10, vPadding: 10, margin: 10,borderColor: Colors.grey.shade200,
@@ -283,7 +284,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                       vPadding: height*0.01,
                       hPadding: width*0.03,
                       vMargin: height*0.01,
-                      borderColor: franchiseTheme,
+                      borderColor: Colors.grey.shade300,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -346,6 +347,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context,index){
                       return customContainer(
+
                         bRadius: 15,
                         vMargin: height*0.01,
                         child: ExpansionTile(
@@ -378,7 +380,6 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
 
 Widget _dash({required context}){
   final double width=MediaQuery.of(context).size.width;
-  final double height=MediaQuery.of(context).size.height;
   return Row(
     children: [
       Image.asset('assets/package/bgImg/arrow.png',width: width*0.17,),

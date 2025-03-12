@@ -33,6 +33,7 @@ class _AllScreenState extends State<AllScreen> {
   @override
   Widget build(BuildContext context) {
     final double width=MediaQuery.of(context).size.width;
+    final double height=MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -40,18 +41,19 @@ class _AllScreenState extends State<AllScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              GridView.builder(
-                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-                 itemCount: name.length,
-                 shrinkWrap: true,
-                 physics: NeverScrollableScrollPhysics(),
-                 itemBuilder: (context,index){
-                return customContainer(bRadius: width*0.1,containerColor: Colors.blue.shade800,onTap: (){
-                Navigator.pushNamed(context, name[index].toString());
-                }
-                ,child: Center(child: Text(nameOfPages[index].toString(),style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500),textAlign: TextAlign.center,softWrap: true,maxLines: 2,),),
-                );
-              }),
+                GridView.builder(
+                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                   itemCount: name.length,
+                   shrinkWrap: true,
+                   physics: NeverScrollableScrollPhysics(),
+                   itemBuilder: (context,index){
+                  return customContainer(bRadius: width*0.04,hMargin: width*0.01,vMargin:height*0.002,containerColor: Colors.blue.shade800,onTap: (){
+                  Navigator.pushNamed(context, name[index].toString());
+                  }
+                  ,child: Center(child: Text(nameOfPages[index].toString(),style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w500),textAlign: TextAlign.center,softWrap: true,maxLines: 2,overflow: TextOverflow.ellipsis,),),
+                  );
+                 }
+                ),
             ],
           ),
         ),

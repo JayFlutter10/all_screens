@@ -41,39 +41,41 @@ class _OfflineEventScreenState extends State<OfflineEventScreen> {
                       context: context, builder:(BuildContext context){
                     return SizedBox(
                       height: height*0.5,
-                      child: Padding(
-                        padding:  EdgeInsets.symmetric(vertical: height*0.03,horizontal: width*0.03 ),
-                        child: Column(
-                          crossAxisAlignment:CrossAxisAlignment.start ,
-                          children: [
-                            ListView.builder(
-                              itemCount: placeName.length,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context,index){
-                              return Column(
-                                children: [
-                                  customContainer(bRadius: width*0.04,vPadding: height*0.01,borderColor:selectedIndex==index? Color.fromRGBO(0, 80, 157, 1):Colors.white,
-                                    hPadding: width*0.02,hMargin: width*0.01,
-                                    onTap: (){
-                                    setState(() {
-                                      selectedIndex=index;
-                                    });
-                                    Navigator.pop(context);
-                                    },
-                                    child: Row(
-                                      children: [
-                                          Image.asset('assets/offline_event/img/india_gate.png'),
-                                          SizedBox(width: width*0.03,),
-                                          Text(placeName[index].toString(),style: textStyle16(context),),
-                                      ],
-                                    )
-                                  ),
-                                  SizedBox(height: height*0.01,),
-                                ],
-                              );
-                            })
-                          ],
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding:  EdgeInsets.symmetric(vertical: height*0.03,horizontal: width*0.03 ),
+                          child: Column(
+                            crossAxisAlignment:CrossAxisAlignment.start ,
+                            children: [
+                              ListView.builder(
+                                itemCount: placeName.length,
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context,index){
+                                return Column(
+                                  children: [
+                                    customContainer(bRadius: width*0.04,vPadding: height*0.01,borderColor:selectedIndex==index? Color.fromRGBO(0, 80, 157, 1):Colors.white,
+                                      hPadding: width*0.02,hMargin: width*0.01,
+                                      onTap: (){
+                                      setState(() {
+                                        selectedIndex=index;
+                                      });
+                                      Navigator.pop(context);
+                                      },
+                                      child: Row(
+                                        children: [
+                                            Image.asset('assets/offline_event/img/india_gate.png'),
+                                            SizedBox(width: width*0.03,),
+                                            Text(placeName[index].toString(),style: textStyle16(context),),
+                                        ],
+                                      )
+                                    ),
+                                    SizedBox(height: height*0.01,),
+                                  ],
+                                );
+                              })
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -89,30 +91,31 @@ class _OfflineEventScreenState extends State<OfflineEventScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: height*0.02,
-              ),
+              SizedBox(height: height*0.02,),
         
               ///Search Field
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search by city',
-                  prefixIcon: Icon(Icons.search),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black38),
-                      borderRadius: BorderRadius.circular(width*0.04),
+              SizedBox(
+                height: height*0.06,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search by city',
+                    prefixIcon: Icon(Icons.search),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(width*0.04),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(width*0.04)
+                    )
                   ),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black38),
-                    borderRadius: BorderRadius.circular(width*0.04)
-                  )
                 ),
               ),
               SizedBox(height: height*0.02,),
         
               ///Text and Banner
               Text('Free Stay on your first offline training',style: textStyle16(context),),
-             Image.asset('assets/offline_event/img/Alt Slide 01.png'),
+              Image.asset('assets/offline_event/img/Alt Slide 01.png'),
               SizedBox(height: height*0.02,),
         
               ///Event Details
@@ -188,8 +191,8 @@ class _OfflineEventScreenState extends State<OfflineEventScreen> {
                 alignment: Alignment.center,
                 children: [
                   customContainer(bRadius: width*0.04,vPadding: height*0.01,hPadding: width*0.04,
-                  height: height*0.2,
-                  assetsImg: 'assets/offline_event/img/map_background.png'
+                  height: height*0.2,imageOpacity: 0.4,
+                  assetsImg: 'assets/offline_event/img/map_background.png',
                    ),
                 customContainer(bRadius: width*0.02,width: width*0.8,vPadding: height*0.005,hPadding: width*0.01,
                   child: Row(
@@ -212,28 +215,31 @@ class _OfflineEventScreenState extends State<OfflineEventScreen> {
                 ]
               ),
 
-              SizedBox(height: height*0.1,),
-              customContainer(
-                shadowColor: Colors.transparent,
-                bRadius: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Entry',style: textStyle16(context,color: Colors.grey),),
-                        Text('Free of cost',style: textStyle18(context),)
-                      ],
-                    ),
-                    customContainer(bRadius: width*0.02,vPadding: height*0.015,hPadding: width*0.04,containerColor: Color.fromRGBO(0, 80, 157, 1),
-                    child: Text('Book Now',style: textStyle18(context,color: Colors.white),),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: height*0.1,),
 
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar:SizedBox(
+        height: height*0.08,
+        child: customContainer(
+          bRadius: width*0.01,hPadding: width*0.04,vPadding: height*0.01,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Entry',style: textStyle16(context,color: Colors.grey),),
+                  Text('Free of cost',style: textStyle18(context),),
+                ],
+              ),
+              customContainer(bRadius: width*0.02,vPadding: height*0.015,hPadding: width*0.04,containerColor: Color.fromRGBO(0, 80, 157, 1),
+                child: Text('Book Now',style: textStyle18(context,color: Colors.white),),
+                onTap: (){
+
+                }
+              )
             ],
           ),
         ),
@@ -252,7 +258,6 @@ Widget _rowIconText({required IconData icon,required String title,required doubl
 }
 
 Widget _iconColumnText({required IconData icon,required String title,required double width,required double height,required  BuildContext context}){
- 
   return customContainer(
     bRadius: width*0.04,vPadding:height*0.01,hPadding: width*0.01,width: width*0.23,
     child: Column(
