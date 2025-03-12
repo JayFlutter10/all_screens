@@ -18,8 +18,8 @@ class SemiCircleChart extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //Values of both variables [firstVal,secondVal] always should be less then 800 always
-    final double firstVal=100;
-    final double secondVal=400;
+    final double firstVal=500;
+    final double secondVal=300;
 
     final double value=firstVal*100/200;
     final double valueTwo=secondVal*100/200;
@@ -129,46 +129,6 @@ class SemiCircleChart extends StatelessWidget {
                       ),
                     ),
                   ),
-                  //Arrow
-                  // Transform.rotate(
-                  //   transformHitTests:false,
-                  //   angle: 140.15,
-                  //   child: PieChart(
-                  //     PieChartData(
-                  //       startDegreeOffset: 340,
-                  //       sectionsSpace:0,
-                  //       centerSpaceRadius: 125,
-                  //       sections: [
-                  //         PieChartSectionData(
-                  //           value: 200,
-                  //           color: Colors.transparent,
-                  //           radius: 2,
-                  //           showTitle: false,
-                  //         ),
-                  //         //Outlined
-                  //         PieChartSectionData(
-                  //           value:valueTwo,
-                  //           color: Colors.green,
-                  //           radius: 2,
-                  //           showTitle: false,
-                  //         ),
-                  //         //Filled
-                  //         PieChartSectionData(
-                  //           value: 400-valueTwo,
-                  //           color:  Colors.transparent,
-                  //           radius: 2,
-                  //           showTitle: false,
-                  //         ),
-                  //         PieChartSectionData(
-                  //           value: 200,
-                  //           color: Colors.transparent,
-                  //           radius: 2,
-                  //           showTitle: false,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
 

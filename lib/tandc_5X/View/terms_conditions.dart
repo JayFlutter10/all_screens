@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:side_bizbooster/constants/style/text_styles.dart';
 import '../../constants/widgets/custom_container.dart';
 
 class TermsConditions extends StatelessWidget {
@@ -25,13 +25,14 @@ class TermsConditions extends StatelessWidget {
     {
       'Ques':'Available only for Premium Franchise members',
       'Ans':'This offer is exclusively available to Premium Franchise members. Super and non-premium members are not eligible for this guarantee.',
-      'Icon':'3'
+      'Icon':''
 
     }
   ];
   @override
   Widget build(BuildContext context) {
     final double width=MediaQuery.of(context).size.width;
+    final double height=MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -47,49 +48,47 @@ class TermsConditions extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Terms & Conditions for 5X Guarantee',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+            Text('Terms & Conditions for 5X Guarantee',style:textStyle18(context),),
             //Terms and Conditions
-            Container(
-              color: Color.fromRGBO(240, 240, 240, 0.3),
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(top: 15),
-                shrinkWrap: true,
-                itemCount: tnc.length,
-                 itemBuilder: (BuildContext context, int index) {
-                   return customContainer(
-                     containerColor: Colors.white,
-                     margin: 8,
-                     bRadius: 10,
-                     child: ExpansionTile(
-                       shape:RoundedRectangleBorder(
-                           side: BorderSide.none,
-                           borderRadius: BorderRadius.zero
-                       ) ,
-                       collapsedShape: RoundedRectangleBorder(
-                           side: BorderSide.none,
-                           borderRadius: BorderRadius.zero
-                       ),
-                       childrenPadding: EdgeInsets.only(left: 10),
-                       //Questions
-                       title: Row(
-                         children: [
-                           index!=3?customContainer(containerColor:Colors.transparent,bRadius: 5, vPadding:2,hPadding: 2,child: CircleAvatar(backgroundColor:Color.fromRGBO(0, 63, 136, 1),radius: 21,child: Text(tnc[index]['Icon'],style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold),),)):customContainer(bRadius: 5,vPadding: 2,hPadding: 2,child: CircleAvatar(backgroundColor:Color.fromRGBO(0, 63, 136, 1),radius:22,child: Icon(Icons.diamond,size: 35,color: Colors.white,),)),
-                           SizedBox(width: width*0.05,),
-                           Expanded(child: Text(tnc[index]['Ques'],style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,),maxLines: 2,)),
-                         ],
-                       ),
-                       //Answers
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(top: 15),
+              shrinkWrap: true,
+              itemCount: tnc.length,
+               itemBuilder: (BuildContext context, int index) {
+                 return customContainer(
+                   containerColor: Colors.white,
+                   vMargin: height*0.005,
+                   bRadius: 10,
+                   child: ExpansionTile(
+                     shape:RoundedRectangleBorder(
+                         side: BorderSide.none,
+                         borderRadius: BorderRadius.zero
+                     ) ,
+                     collapsedShape: RoundedRectangleBorder(
+                         side: BorderSide.none,
+                         borderRadius: BorderRadius.zero
+                     ),
+                     childrenPadding: EdgeInsets.only(left: 10),
+                     //Questions
+                     title: Row(
                        children: [
-                         Padding(
-                           padding: const EdgeInsets.only(left:16.0,),//rgba(133, 133, 133, 1)
-                           child: Text(tnc[index]['Ans'],style: TextStyle(color: Color.fromRGBO(133, 133, 133, 0.8),fontWeight: FontWeight.w500),),
-                         ),
+                         index!=3?customContainer(borderColor: Colors.white,bRadius: 5,shadowColor: Colors.white, vPadding:2,hPadding: 2,child: CircleAvatar(backgroundColor:Color.fromRGBO(0, 63, 136, 1),radius: 21,child: Text(tnc[index]['Icon'],style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.bold),),))
+                             :customContainer(borderColor: Colors.white,shadowColor: Colors.white, bRadius: 5,vPadding: 2,hPadding: 2,child: CircleAvatar(backgroundColor:Color.fromRGBO(0, 63, 136, 1),radius:22,child: Icon(Icons.diamond,size: 35,color: Colors.white,),)),
+                         SizedBox(width: width*0.05,),
+                         Expanded(child: Text(tnc[index]['Ques'],style: textStyle16(context,fontWeight: FontWeight.w600),maxLines: 2,)),
                        ],
                      ),
-                   );
-                 }
-              ),
+                     //Answers
+                     children: [
+                       Padding(
+                         padding: const EdgeInsets.only(left:16.0,),//rgba(133, 133, 133, 1)
+                         child: Text(tnc[index]['Ans'],style: textStyle16(context,color: Colors.grey),),
+                       ),
+                     ],
+                   ),
+                 );
+               }
             ),
           ],
         ),

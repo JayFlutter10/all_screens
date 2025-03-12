@@ -64,7 +64,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
       appBar: AppBar(title: Text('Package'),),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/package/bgImg/bkgImg.jpg',),fit: BoxFit.fill,opacity: 0.5),
+          image: DecorationImage(image: AssetImage('assets/package/bgImg/bkgImg.jpg',),fit: BoxFit.fill,opacity: 0.35),
         ),
         child: SingleChildScrollView(
           child: Padding(
@@ -124,7 +124,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                               children: [
                                 Text(dataFranchise.franchiseName[selection],style: TextStyle(fontSize: 20,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
                                 Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: TextStyle(fontSize: 16,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
-                                selection==0?Text('₹7,00,000 '):Text('Recruit 10 franchises to become a Super Franchise.',style: TextStyle(fontSize: 12,color: Colors.grey),textAlign: TextAlign.end,),
+                                selection==0?Text('₹7,00,000',style: textStyle16(context,color: Colors.grey),):selection==1?Text('Recruit 10 GPs to become a SGP.',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,):Text('When your appointed GPs recruit 10 more, you become a PGP',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,),
                               ],
                             ),
                           ),
@@ -149,7 +149,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                                   franchiseDetails[index]['data'].toString().split('.').where((sentence) => sentence.trim().isNotEmpty)
                                       .map((sentence) => '• ${sentence.trim()}')
                                       .join('\n'),
-                                  style: TextStyle(fontSize: 14),
+                                  style: textStyle14(context,fontWeight: FontWeight.w400),
                                 ),
                                 SizedBox(height: height*0.01,)
                               ],
