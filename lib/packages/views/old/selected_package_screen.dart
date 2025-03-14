@@ -181,17 +181,17 @@ class _SelectedPackageScreenState extends State<SelectedPackageScreen> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: selection == 0
-                      ? dataFranchise.franchise.length
+                      ? dataFranchise.growthPartner.length
                       : selection == 1
-                      ? dataFranchise.superFranchise.length
-                      : dataFranchise.premiumFranchise.length,
+                      ? dataFranchise.superGrowthPartner.length
+                      : dataFranchise.premiumGrowthPartner.length,
                   itemBuilder: (context, index) {
         
                     final currentData = selection == 0
-                        ? dataFranchise.franchise
+                        ? dataFranchise.growthPartner
                         : selection == 1
-                        ? dataFranchise.superFranchise
-                        : dataFranchise.premiumFranchise;
+                        ? dataFranchise.superGrowthPartner
+                        : dataFranchise.premiumGrowthPartner;
         
                     return customContainer(
                       bRadius: 15,

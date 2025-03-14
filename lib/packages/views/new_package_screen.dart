@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:side_bizbooster/constants/style/text_styles.dart';
 import 'package:side_bizbooster/constants/widgets/custom_container.dart';
 import 'package:side_bizbooster/packages/views/scratch_cupon_screen.dart';
-
 import '../widgets/data_franchise.dart';
 
 class NewPackageScreen extends StatefulWidget {
@@ -12,6 +11,7 @@ class NewPackageScreen extends StatefulWidget {
   @override
   State<NewPackageScreen> createState() => _NewPackageScreenState();
 }
+bool isGiftLocked=true;
 final List<dynamic> learnMore=[
   {
     'title':'Learn more about revenue',
@@ -104,6 +104,7 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     ],
                   ),
                 ),
+
                 ///Franchise Details
                 customContainer(bRadius: width*0.04, vPadding: height*0.01,
                     vMargin: height*0.02,
@@ -115,15 +116,17 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                       ///Franchise name
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(radius: width*0.1,),
-                          SizedBox(width: width*0.01,),
+                          CircleAvatar(radius: height*0.05,),
+
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text(dataFranchise.franchiseName[selection],style: TextStyle(fontSize: 20,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
-                                Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: TextStyle(fontSize: 16,color:franchiseTheme,fontWeight: FontWeight.w500),textAlign: TextAlign.end,),
+                                selection==0?Text('BizBooster',style: textStyle22(context,color: franchiseTheme,fontWeight: FontWeight.w600),):Container(),
+                                Text(dataFranchise.franchiseName[selection],style: TextStyle(fontSize: 20,color:franchiseTheme,fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
+                                Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: TextStyle(fontSize: 16,color:franchiseTheme,fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
                                 selection==0?Text('₹7,00,000',style: textStyle16(context,color: Colors.grey),):selection==1?Text('Recruit 10 GPs to become a SGP.',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,):Text('When your appointed GPs recruit 10 more, you become a PGP',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,),
                               ],
                             ),
@@ -256,9 +259,9 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _columnBenefits(icon: Icons.wallet, text: '15% Revenue\n Share', color: franchiseTheme),
-                      _columnBenefits(icon: Icons.window_rounded, text: 'Standard\nTemplate', color: franchiseTheme),
-                      _columnBenefits(icon: Icons.access_time, text: 'Support\nWithin 3-6hrs', color: franchiseTheme),
+                      _columnBenefits(text: dataFranchise.iconsData[selection]['value'][0].toString(), color: franchiseTheme, path: 'assets/package/new_img/wallet.png'),
+                      _columnBenefits(text: '5X Return\nGuaranteed', color: franchiseTheme, path: 'assets/package/new_img/5x.png'),
+                      _columnBenefits(text:  dataFranchise.iconsData[selection]['value'][1].toString(), color: franchiseTheme, path: 'assets/package/new_img/rupee.png'),
                     ],
                   ),),
 
@@ -267,17 +270,17 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: selection == 0
-                      ? dataFranchise.franchise.length
+                      ? dataFranchise.growthPartner.length
                       : selection == 1
-                      ? dataFranchise.superFranchise.length
-                      : dataFranchise.premiumFranchise.length,
+                      ? dataFranchise.superGrowthPartner.length
+                      : dataFranchise.premiumGrowthPartner.length,
                   itemBuilder: (context, index) {
 
                     final currentData = selection == 0
-                        ? dataFranchise.franchise
+                        ? dataFranchise.growthPartner
                         : selection == 1
-                        ? dataFranchise.superFranchise
-                        : dataFranchise.premiumFranchise;
+                        ? dataFranchise.superGrowthPartner
+                        : dataFranchise.premiumGrowthPartner;
 
                     return customContainer(
                       bRadius: width*0.04,
@@ -298,38 +301,31 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: currentData[index]['subtitle'].length,
                             itemBuilder: (context, i) {
-                              return Row(
-                                children: [
-                                  Icon(
-                                    currentData[index]['subtitle'][i]['icon'],
-                                    color: franchiseTheme,
-                                  ),
-                                  SizedBox(width: width*0.02),
-                                  Expanded(
-                                      child: RichText(
-                                        text: TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: '${currentData[index]['subtitle'][i]['data']
-                                                  .toString()
-                                                  .split(' ')
-                                                  .take(2)
-                                                  .join(' ')} ', // Extract first two words and add space
-                                              style: TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
-                                            ),
-                                            TextSpan(
-                                              text: currentData[index]['subtitle'][i]['data']
-                                                  .toString()
-                                                  .split(' ')
-                                                  .skip(1)
-                                                  .join(' '), // Remaining words
-                                              style: TextStyle(color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                  ),
-                                ],
+                              return Padding(
+                                padding:  EdgeInsets.symmetric(vertical: height*0.004),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      currentData[index]['subtitle'][i]['icon'],
+                                      color: franchiseTheme,
+                                    ),
+                                    SizedBox(width: width*0.02),
+                                    Expanded(
+                                        child: RichText(
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: currentData[index]['subtitle'][i]['data'].toString()                                                  , // Extract first two words and add space
+                                                style: textStyle16(context,fontWeight: FontWeight.w400),
+                                              ),
+
+                                            ],
+                                          ),
+                                        )
+                                    ),
+                                  ],
+                                ),
                               );
                             },
                           ),
@@ -340,6 +336,181 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                   },
                 ),
 
+             selection==0?Container():customContainer(
+                margin: width*0.01,
+                vPadding: height*0.01,
+                hPadding: width*0.015,
+                bRadius: width*0.05,
+                child: Column(
+                  children: [
+                    ///Reward Company and Name and expiry details
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
+                            SizedBox(width: width*0.02,),
+                            Text('Achievement')
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: height*0.01,
+                    ),
+
+                    ///banner image
+                    customContainer(bRadius: 12,assetsImg: 'assets/rewards/img/ipad.png',height: height*0.2),
+                    Padding(
+                      padding:  EdgeInsets.only(top:height*0.02),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: height*0.0,
+                          ),
+                          CircleAvatar(radius: height*0.04,backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
+                          SizedBox(width: width*0.05,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Apple',style: textStyle16(context),
+                              ),
+                              Text('Get a free I-Pad',
+                                style: textStyle18(context)
+                                ,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: height*0.01,),
+
+                    ///Eligibility Criteria and Linear Progress Bar
+                     Padding(
+                       padding:  EdgeInsets.symmetric(horizontal: width*0.03),
+                       child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Eligibility Criteria',style: textStyle16(context)
+                            ),
+                            Text('You are eligible for free gift when you become super growth partner.',style: textStyle16(context,fontWeight: FontWeight.w400),
+                            ),
+
+                          ],
+                        ),
+                     ),
+                    SizedBox(height: height*0.02,),
+                    customContainer(bRadius: width*0.08,
+                      onTap: (){
+                      isGiftLocked==true?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Become a partner'),
+                      )):ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data'),));
+                      },
+                      width: width*0.8,
+                      containerColor: Colors.grey,
+                      vPadding: height*0.01,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.lock_outline,color: Colors.white,),
+                          Text('Claim Now',style: textStyle16(context,color: Colors.white),),
+                        ],
+                      )
+                    ),
+                    SizedBox(height:5 ,),
+                  ],
+                ),
+              ),
+                SizedBox(height: height*0.05,),
+
+                selection==0||selection==1?Container(height: 1,):customContainer(
+                  margin: width*0.01,
+                  vPadding: height*0.01,
+                  hPadding: width*0.015,
+                  bRadius: width*0.05,
+                  child: Column(
+                    children: [
+                      ///Reward Company and Name and expiry details
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(backgroundImage: AssetImage('assets/rewards/img/goa_plane.png'),),
+                              SizedBox(width: width*0.02,),
+                              Text('Free Vacation for 2')
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height*0.01,
+                      ),
+
+                      ///banner image
+                      customContainer(bRadius: 12,assetsImg: 'assets/rewards/img/beach.png',height: height*0.2),
+                      Padding(
+                        padding:  EdgeInsets.only(top:height*0.02),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: height*0.0,
+                            ),
+                            CircleAvatar(radius: height*0.04,backgroundImage: AssetImage('assets/rewards/img/goa_plane.png'),),
+                            SizedBox(width: width*0.05,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Goa',style: textStyle16(context),
+                                ),
+                                Text('Free Vacation for 2',
+                                  style: textStyle18(context)
+                                  ,),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: height*0.01,),
+
+                      ///Eligibility Criteria and Linear Progress Bar
+                      Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: width*0.03),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Eligibility Criteria',style: textStyle16(context)
+                            ),
+                            Text('You are eligible for free vacation when you become Premium growth partner.',style: textStyle16(context,fontWeight: FontWeight.w400),
+                            ),
+
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: height*0.02,),
+                      customContainer(bRadius: width*0.08,
+                          onTap: (){
+                            isGiftLocked==true?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Become a partner'),
+                            )):ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data'),));
+                          },
+                          width: width*0.8,
+                          containerColor: Colors.grey,
+                          vPadding: height*0.01,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.lock_outline,color: Colors.white,),
+                              Text('Claim Now',style: textStyle16(context,color: Colors.white),),
+                            ],
+                          )
+                      ),
+                      SizedBox(height:5 ,),
+                    ],
+                  ),
+                ),
+
                 ///Learn More
                 ListView.builder(
                     itemCount: dataFranchise.learnMore.length,
@@ -347,7 +518,6 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context,index){
                       return customContainer(
-
                         bRadius: 15,
                         vMargin: height*0.01,
                         child: ExpansionTile(
@@ -386,10 +556,10 @@ Widget _dash({required context}){
     ],
   );
 }
-Widget _columnBenefits({required IconData icon,required String text,required Color color}){
+Widget _columnBenefits({required String text,required Color color,required String path}){
   return Column(
     children: [
-      customContainer(containerColor:color,shadowColor: Colors.transparent,borderColor: Colors.transparent,bRadius: 15, vPadding: 10,hPadding: 10,child: Icon(icon,size: 30,color: Colors.white,),),
+      customContainer(containerColor:color,shadowColor: Colors.transparent,borderColor: Colors.transparent,bRadius: 15, vPadding: 10,hPadding: 10,child: Image.asset(path,width: 35,height: 35,)),
       Text(text,textAlign: TextAlign.center,style: TextStyle(fontSize: 14,color: color,fontWeight: FontWeight.w500),)
     ],
   );

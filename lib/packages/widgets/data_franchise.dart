@@ -22,9 +22,9 @@ class DataFranchise{
     'GB','SGP','PGP'
   ];
   final List<dynamic> franchiseName=[
-    'BizBooster Growth Partner','Super Growth Partner','Premium Growth Partner'
+    'Growth Partner','Super Growth Partner','Premium Growth Partner'
   ];
-  final List<dynamic> franchise=[
+  final List<dynamic> growthPartner=[
     {
       'title':'Assured Earnings Opportunity',
       'subtitle': [
@@ -33,8 +33,12 @@ class DataFranchise{
           'icon': CupertinoIcons.money_yen,
         },
         {
-          'data':'Scalable income – The more leads you convert, the higher your earnings!',
+          'data':'₹5000 per direct GP, ₹3000 per indirect referral',
           'icon':Icons.auto_graph_outlined
+        },
+        {
+          'data':'Business Onboarding Bonus: Up to ₹10,000 per business/service',
+          'icon':Icons.warehouse_rounded
         },
       ],
     },
@@ -42,25 +46,17 @@ class DataFranchise{
       'title':'Revenue & Commission Structure',
       'subtitle':[
         {
-          'data':'Earn 5% to 15% revenue share on every successful lead conversion',
-          'icon':CupertinoIcons.bag
+          'data':'Support within 3-6 hours',
+          'icon':Icons.support_agent_rounded
         },
         {
-          'data':'Use pre-designed templates for client outreach & promotions',
-          'icon':CupertinoIcons.cube_box_fill
-        },
-        {
-          'data':'Earn ₹5,000 for every franchise you successfully on-board.',
-          'icon':Icons.savings,
-        },
-        {
-          'data':'Earn ₹3,000 when a franchise you on boarded brings in another franchise.',
-          'icon':Icons.account_balance_wallet
-        },
+          'data':'Access to pre-designed outreach & promotion tools',
+          'icon':CupertinoIcons.rectangle_grid_2x2_fill
+        }
       ],
     },
   ];
-  final List<dynamic> superFranchise=[
+  final List<dynamic> superGrowthPartner=[
     {
       'title':'Assured Earnings Opportunity',
       'subtitle': [
@@ -69,8 +65,12 @@ class DataFranchise{
           'icon': CupertinoIcons.money_yen,
         },
         {
-          'data':'Higher income potential with franchise benefits & team earnings!',
+          'data':'₹5000 per direct GP, ₹3000 per indirect referral',
           'icon':Icons.auto_graph_outlined
+        },
+        {
+          'data':'Business Onboarding Bonus: Up to ₹10,000 per business/service',
+          'icon':Icons.warehouse_rounded,
         },
       ],
     },
@@ -78,39 +78,35 @@ class DataFranchise{
       'title':'Revenue & Commission Structure',
       'subtitle':[
         {
-          'data':'Earn 5% to 15% revenue share on every successful lead',
-          'icon':CupertinoIcons.bag
+          'data':'Support within 3-6 hours',
+          'icon':Icons.support_agent_rounded
         },
         {
-          'data':'Use advance templates for client outreach & promotions',
-          'icon':CupertinoIcons.cube_box_fill
-        },
-        {
-          'data':'Earn ₹5,000 for every franchise you successfully on-board.',
-          'icon':Icons.savings,
-        },
-        {
-          'data':'Earn ₹3,000 when a franchise you on boarded brings in another franchise.',
-          'icon':Icons.account_balance_wallet
-        },
-        {
-          'data':'Earn 5% to 10% revenue share from your team\'s performance.',
-          'icon':Icons.money
-        },
+          'data':'Access to pre-designed outreach & promotion tools',
+          'icon':CupertinoIcons.rectangle_grid_2x2_fill
+        }
       ],
     },
   ];
-  final List<dynamic> premiumFranchise=[
+  final List<dynamic> premiumGrowthPartner=[
     {
       'title':'Assured Earnings Opportunity',
       'subtitle': [
         {
-          'data':'5% to 15% revenue share',
+          'data':'Earn ₹70,000 – ₹1,00,000/month',
           'icon': CupertinoIcons.money_yen,
         },
         {
-          'data':'Scalable income – The more leads you convert, the higher your earnings!',
+          'data':'₹5000 per direct GP, ₹3000 per indirect referral',
           'icon':Icons.auto_graph_outlined
+        },
+        {
+          'data':'Business Onboarding Bonus: Up to ₹10,000 per business/service',
+          'icon':Icons.warehouse_rounded
+        },
+        {
+          'data':'3% to 7% from GPs onboarded by direct GPs',
+          'icon':Icons.wallet_rounded
         },
       ],
     },
@@ -118,25 +114,13 @@ class DataFranchise{
       'title':'Revenue & Commission Structure',
       'subtitle':[
         {
-          'data':'Earn 5% to 15% revenue share on every successful lead conversion',
-          'icon':CupertinoIcons.bag
+          'data':'Support within 3-6 hours',
+          'icon':Icons.support_agent_rounded
         },
         {
-          'data':'Earn ₹5,000 for every franchise you successfully on-board.',
-          'icon':CupertinoIcons.cube_box_fill
-        },
-        {
-          'data':'Earn ₹3,000 when a franchise you on boarded brings in another franchise',
-          'icon':Icons.savings,
-        },
-        {
-          'data':'Earn 5% to 10% revenue share from your team\'s performance',
-          'icon':Icons.account_balance_wallet
-        },
-        {
-          'data':'Earn 3% to 7% revenue share from the franchises on boarded by your direct franchisees',
-          'icon':Icons.money
-        },
+          'data':'Access to pre-designed outreach & promotion tools',
+          'icon':CupertinoIcons.rectangle_grid_2x2_fill
+        }
       ],
     },
   ];
@@ -156,5 +140,19 @@ class DataFranchise{
   ];
   final List<dynamic> assuredLearning=[
     ' ₹30,000 – ₹50,000/month',' ₹50,000 – ₹70,000/month',' ₹70,000 – ₹1,00,000/month'
+  ];
+  final List<dynamic> iconsData=[
+    {
+      'key':'GB',
+      'value':['15% Revenue\nShare','Team Building\nincome']
+    },
+    {
+      'key':'SGP',
+      'value':['22% Revenue\nShare','GP Team\nRevenue income']
+    },
+    {
+      'key':'PGP',
+      'value':['27% Revenue\nShare','SGP Team Revenue\nincome']
+    }
   ];
 }
