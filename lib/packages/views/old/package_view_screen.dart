@@ -91,7 +91,7 @@ class _PackageViewScreenState extends State<PackageViewScreen> {
                         ),
                       ),
                       Text(
-                        dataFranchise.assuredLearning[selection],
+                        dataFranchise.assuredEarning[selection],
                         style: TextStyle(
                             fontSize: 16,
                             color: Color.fromRGBO(0, 138, 0, 1),

@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:side_bizbooster/constants/style/text_styles.dart';
-import 'package:side_bizbooster/constants/widgets/custom_container.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:side_bizbooster/packages/views/scratch_cupon_screen.dart';
-import '../widgets/data_franchise.dart';
+import '../../../constants/style/text_styles.dart';
+import '../../../constants/widgets/custom_container.dart';
+import '../../widgets/data_franchise.dart';
 
-class NewPackageScreen extends StatefulWidget {
-  const NewPackageScreen({super.key});
+class AfterPurchaseScreen extends StatefulWidget {
+  const AfterPurchaseScreen({super.key});
 
   @override
-  State<NewPackageScreen> createState() => _NewPackageScreenState();
+  State<AfterPurchaseScreen> createState() => _AfterPurchaseScreenState();
 }
-bool isGiftLocked=true;
-final List<dynamic> learnMore=[
-  {
-    'title':'Learn more about revenue',
-    'data':'Earn 5%-15% revenue share.'
-  },
-  {
-    'title':'Learn more about marketing support',
-    'data':'Earn 7% team revenue.Geo-targeted ad campaigns provided.Use advanced marketing templates',
-  },
-  {
-    'title':'Learn more about franchise support',
-    'data':'Receive support within 6 hours.Get priority franchise access.'
-  }
-];
 
- Color franchiseTheme =Colors.blue;
-class _NewPackageScreenState extends State<NewPackageScreen> {
-  // Create a global key for the benefits section
+class _AfterPurchaseScreenState extends State<AfterPurchaseScreen> {
+  int selection=0;
   final GlobalKey _benefitsKey = GlobalKey();
-
   // Method to scroll to benefits section
   void _scrollToBenefits() {
     Scrollable.ensureVisible(
@@ -41,12 +24,43 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
     );
   }
   DataFranchise dataFranchise=DataFranchise();
-  int selection=0;
+  bool isGiftLocked=true;
+  final List<dynamic> learnMore=[
+    {
+      'title':'Learn more about revenue',
+      'data':'Earn 5%-15% revenue share.'
+    },
+    {
+      'title':'Learn more about marketing support',
+      'data':'Earn 7% team revenue.Geo-targeted ad campaigns provided.Use advanced marketing templates',
+    },
+    {
+      'title':'Learn more about franchise support',
+      'data':'Receive support within 6 hours.Get priority franchise access.'
+    }
+  ];
+  final List<dynamic> franchiseDetails=[
+    {
+      'title':'REVENUE',
+      'data':'Earn 5%-15% revenue share.'
+    },
+    {
+      'title':'REFERRAL BENEFIT',
+      'data':'Get ₹3,000 per team member.'
+    },
+    {
+      'title':'MARKETING SUPPORT ',
+      'data':'Earn 7% team revenue.Geo-targeted ad campaigns provided.Use advanced marketing templates.'
+    },
+  ];
+  Color franchiseTheme =Colors.blue;
+
+
+
   @override
   Widget build(BuildContext context) {
     final double width=MediaQuery.of(context).size.width;
     final double height=MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: AppBar(title: Text('Package'),),
       body: Container(
@@ -91,13 +105,13 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     ],
                   ),
                 ),
-
+                selection==0?Image.asset('assets/package/new_img/line_gb.png'):selection==1?Image.asset('assets/package/new_img/line_sgb.png'):Image.asset('assets/package/new_img/line_pgp.png'),
                 ///Franchise Details
                 customContainer(bRadius: width*0.04, vPadding: height*0.01,
-                    vMargin: height*0.02,
-                    hMargin: width*0.06,
-                    hPadding: width*0.075,
-                    borderColor: franchiseTheme,
+                  vMargin: height*0.02,
+                  hMargin: width*0.06,
+                  hPadding: width*0.075,
+                  borderColor: franchiseTheme,
                   child: Column(
                     children: [
                       ///Franchise name
@@ -129,36 +143,26 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                           ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: dataFranchise.franchiseDetails.length,
-                              itemBuilder: (context, index) {
+                              itemCount: franchiseDetails.length,
+                              itemBuilder: (context,index){
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    Text(franchiseDetails[index]['title'].toString(),style: TextStyle(fontSize: 16,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w500),),
                                     Text(
-                                      dataFranchise.franchiseDetails[selection][dataFranchise.franchiseNameAbbr[selection]][index]['title'].toString(),
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Color.fromRGBO(0, 80, 157, 1),
-                                          fontWeight: FontWeight.w500
-                                      ),
-                                    ),
-                                    Text(
-                                      dataFranchise.franchiseDetails[selection][dataFranchise.franchiseNameAbbr[selection]][index]['data'].toString()
-                                          .split('.')
-                                          .where((sentence) => sentence.trim().isNotEmpty)
+                                      franchiseDetails[index]['data'].toString().split('.').where((sentence) => sentence.trim().isNotEmpty)
                                           .map((sentence) => '• ${sentence.trim()}')
                                           .join('\n'),
-                                      style: textStyle14(context, fontWeight: FontWeight.w400),
+                                      style: textStyle14(context,fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(height: height*0.01,)
                                   ],
                                 );
-                              }
-                          ),
+                              }),
                           SizedBox(height: height*0.015,),
                           customContainer(bRadius: width*0.1,vPadding: height*0.01,hPadding: width*0.1,borderColor: franchiseTheme,
-                            child: Text('Know Benefits',style: TextStyle(fontSize: 16),),
-                            onTap: _scrollToBenefits
+                              child: Text('Know Benefits',style: TextStyle(fontSize: 16),),
+                              onTap: _scrollToBenefits
                           ),
                           SizedBox(height: height*0.008,),
                         ],
@@ -166,71 +170,78 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                     ],
                   ),
                 ),
-          
-                ///Assure 5X
-                selection==0?customContainer(bRadius: width*0.04,borderColor: franchiseTheme,
-                  vMargin: height*0.02, vPadding: height*0.01,
-                    hMargin: width*0.01,
-                    hPadding: width*0.02,
-                  child: Column(
+
+                ///How to Upgrade
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('How to upgrade',style: textStyle18(context,color: Colors.grey),),
+                    Icon(Icons.keyboard_arrow_down_rounded,size: 22,color: Colors.grey,),
+                  ],
+                ),
+                SizedBox(height: height*0.01,),
+                customContainer(bRadius: width*0.04,
+                  hPadding: width*0.04,
+                  child: Row(
                     children: [
-                      ///Assured Text and Buy Now
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        customContainer(
-                            height: height*0.12,
-                            width: width*0.3,bRadius: width*0.02,assetsImg: 'assets/package/img/rafiki.png'),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height*0.001,horizontal: width*0.02),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [Text('We assure you '),
-                                  Text('5X Return',style: TextStyle(fontSize: 16,color: Colors.blue,fontWeight: FontWeight.w500,decoration: TextDecoration.underline,decorationColor: Colors.blue),),
-                                ],),
-                                Text('If you earn less than our assured earnings, we’ll refund up to 5X your initial amount',style: TextStyle(fontSize: 12,color: Colors.grey),textAlign: TextAlign.end,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text('₹7,00,000',style: TextStyle(color: Color.fromRGBO(0, 80, 157, 1,),fontWeight: FontWeight.w500,fontSize: 16),),
-                                    customContainer(bRadius: width*0.05,vPadding: height*0.01,hPadding: width*0.08,containerColor: Color.fromRGBO(29, 139, 242, 1),
-                                      child: Text('Buy Now',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-
-                    SizedBox(height: height*0.01,),
-                    customContainer(bRadius: width*0.06,borderColor: franchiseTheme,vPadding: height*0.01,hPadding: width*0.04,
-                      child: Text('Check Your Discount Eligibility',style: TextStyle(fontSize: 16,color: franchiseTheme),),
-                      onTap: (){
-                      Get.to(()=>ScratchCuponScreen());
-                      }
-                    ),
-                    SizedBox(height: height*0.01,),
-
+                      customContainer(bRadius: width*0.04,
+                        vPadding: height*0.01,
+                        vMargin: height*0.04,
+                        hMargin: width*0.05,
+                        hPadding: width*0.02,
+                        containerColor: franchiseTheme,
+                        onTap: (){},
+                        child: Text('5X Guarantee',style: textStyle16(context,color: Colors.white),),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('If you earn less than our assured earnings, we’ll refund up to 5X your initial amount',textAlign: TextAlign.end,style: textStyle16(context,color: Colors.grey),)
+                          ],
+                        ),
+                      )
                     ],
-                  ),
-                ):Container(),
+                  )
+                ),
+                SizedBox(height: height*0.01,),
+                customContainer(bRadius: width*0.04,
+                    hPadding: width*0.04,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text('Complete KYC to unlock benefits like training,offline event and to access leads',style: textStyle16(context,color: Colors.grey),)
+                            ],
+                          ),
+                        ),
+                        customContainer(bRadius: width*0.04,
+                          onTap: (){},
+                          vPadding: height*0.01,
+                          vMargin: height*0.04,
+                          hMargin: width*0.05,
+                          hPadding: width*0.1,
+                          borderColor: franchiseTheme,
+                          child: Text('KYC',style: textStyle16(context,color: franchiseTheme),),
+                        ),
+
+                      ],
+                    )
+                ),
+                SizedBox(height: height*0.02,),
+
 
                 ///Assured Earning
                 customContainer(bRadius: width*0.06, vPadding: 5, hPadding: width*0.08, containerColor: franchiseTheme,
                   child: Column(
                     children: [
                       Text(
-                        'Assured Earnings',
-                        style: textStyle18(context,color: Colors.white)
+                          'Assured Earnings',
+                          style: textStyle18(context,color: Colors.white)
                       ),
                       Text(
-                        dataFranchise.assuredEarning[selection].toString(),
-                        style: textStyle16(context,color: Colors.white)
+                          dataFranchise.assuredEarning[selection].toString(),
+                          style: textStyle16(context,color: Colors.white)
                       ),
                     ],
                   ),
@@ -331,60 +342,60 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
                   },
                 ),
 
-              selection==0?Container():customContainer(
-                vPadding: height*0.01,
-                hPadding: width*0.015,
-                bRadius: width*0.05,
-                child: Column(
-                  children: [
-                    ///Reward Company and Name and expiry details
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
-                            SizedBox(width: width*0.02,),
-                            Text('Achievement')
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: height*0.01,
-                    ),
-
-                    ///banner image
-                    customContainer(bRadius: 12,assetsImg: 'assets/rewards/img/ipad.png',height: height*0.2),
-                    Padding(
-                      padding:  EdgeInsets.only(top:height*0.02),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                selection==0?Container():customContainer(
+                  vPadding: height*0.01,
+                  hPadding: width*0.015,
+                  bRadius: width*0.05,
+                  child: Column(
+                    children: [
+                      ///Reward Company and Name and expiry details
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            height: height*0.0,
-                          ),
-                          CircleAvatar(radius: height*0.04,backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
-                          SizedBox(width: width*0.05,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
                             children: [
-                              Text('Apple',style: textStyle16(context),
-                              ),
-                              Text('Get a free I-Pad',
-                                style: textStyle18(context)
-                                ,),
+                              CircleAvatar(backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
+                              SizedBox(width: width*0.02,),
+                              Text('Achievement')
                             ],
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: height*0.01,),
+                      SizedBox(
+                        height: height*0.01,
+                      ),
 
-                    ///Eligibility Criteria and Linear Progress Bar
-                     Padding(
-                       padding:  EdgeInsets.symmetric(horizontal: width*0.03),
-                       child: Column(
+                      ///banner image
+                      customContainer(bRadius: 12,assetsImg: 'assets/rewards/img/ipad.png',height: height*0.2),
+                      Padding(
+                        padding:  EdgeInsets.only(top:height*0.02),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: height*0.0,
+                            ),
+                            CircleAvatar(radius: height*0.04,backgroundImage: AssetImage('assets/rewards/img/apple_icon.png'),),
+                            SizedBox(width: width*0.05,),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Apple',style: textStyle16(context),
+                                ),
+                                Text('Get a free I-Pad',
+                                  style: textStyle18(context)
+                                  ,),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: height*0.01,),
+
+                      ///Eligibility Criteria and Linear Progress Bar
+                      Padding(
+                        padding:  EdgeInsets.symmetric(horizontal: width*0.03),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Eligibility Criteria',style: textStyle16(context)
@@ -394,28 +405,28 @@ class _NewPackageScreenState extends State<NewPackageScreen> {
 
                           ],
                         ),
-                     ),
-                    SizedBox(height: height*0.02,),
-                    customContainer(bRadius: width*0.08,
-                      onTap: (){
-                      isGiftLocked==true?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Become a partner'),
-                      )):ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data'),));
-                      },
-                      width: width*0.8,
-                      containerColor: Colors.grey,
-                      vPadding: height*0.01,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.lock_outline,color: Colors.white,),
-                          Text('Claim Now',style: textStyle16(context,color: Colors.white),),
-                        ],
-                      )
-                    ),
-                    SizedBox(height:5 ,),
-                  ],
+                      ),
+                      SizedBox(height: height*0.02,),
+                      customContainer(bRadius: width*0.08,
+                          onTap: (){
+                            isGiftLocked==true?ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Become a partner'),
+                            )):ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('data'),));
+                          },
+                          width: width*0.8,
+                          containerColor: Colors.grey,
+                          vPadding: height*0.01,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.lock_outline,color: Colors.white,),
+                              Text('Claim Now',style: textStyle16(context,color: Colors.white),),
+                            ],
+                          )
+                      ),
+                      SizedBox(height:5 ,),
+                    ],
+                  ),
                 ),
-              ),
                 SizedBox(height: height*0.0,),
 
                 selection==0||selection==1?Container(height: 1,):customContainer(
@@ -567,10 +578,10 @@ Widget _circleAvatarFranchise({required Color backgroundColor,required Color col
           InkWell(
             onTap: onTap,
             child: customContainer(
-              containerColor: backgroundColor,
-              bRadius: width*0.1,
-              borderColor: color,
-              height: 65,width: 65
+                containerColor: backgroundColor,
+                bRadius: width*0.1,
+                borderColor: color,
+                height: 65,width: 65
             ),
           ),
           SizedBox(width: width*0.008,),

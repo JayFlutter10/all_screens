@@ -24,11 +24,29 @@ class _AllScreenState extends State<AllScreen> {
     '/vendor_list_view_screen',
     '/my_kyc_screen',
     '/service_details_screen',
-    '/new_package_screen',
     '/offline_event_screen',
+    '/new_package_screen',
+    '/after_purchase_screen'
+
   ];
   final List<String> nameOfPages=[
-    'Video Academy','Favourite Screen','Package Screen','Bought Package Screen','Reward Screen','Shorts Screen','Terms and Conditions 5X','Color Theme','Chart 5X','Cart','Custom Widgets','Vendor List','My Kyc Screen','Service Screen','New Package Screen','Offline Event Screen'
+    'Video Academy',
+    'Favourite Screen',
+    'Package Screen',
+    'Bought Package Screen',
+    'Reward Screen',
+    'Shorts Screen',
+    'Terms and Conditions 5X',
+    'Color Theme',
+    'Chart 5X',
+    'Cart',
+    'Custom Widgets',
+    'Vendor List',
+    'My Kyc Screen',
+    'Service Screen',
+    'Offline Event Screen',
+    'New Package Screen',
+    'After Purchase Screen',
   ];
   @override
   Widget build(BuildContext context) {

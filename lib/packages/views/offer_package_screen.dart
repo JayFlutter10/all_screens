@@ -68,20 +68,20 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _circleAvatarFranchise( franchiseName: 'Franchise\n', onTap: (){
+                        _circleAvatarFranchise( franchiseName: 'GB', onTap: (){
                           setState(() {
                             selection=0;
                             franchiseTheme=Colors.blue;
                           });
                         }, color: Colors.blue, context: context, selection: selection, backgroundColor: selection==0?Colors.blue.shade50:Colors.white),
                         _dash(context: context),
-                        _circleAvatarFranchise(franchiseName: 'Super\nFranchise', onTap: (){
+                        _circleAvatarFranchise(franchiseName: 'SGP', onTap: (){
                           setState(() {
                             selection=1;
                             franchiseTheme=Color.fromRGBO(45, 129, 0, 1);});
                         } ,color: Color.fromRGBO(45, 129, 0, 1), context: context, selection: selection, backgroundColor: selection==1?Color.fromRGBO(45, 129, 0, 0.1):Colors.white),
                         _dash(context: context),
-                        _circleAvatarFranchise( franchiseName: 'Premium\nFranchise', onTap: (){
+                        _circleAvatarFranchise( franchiseName: 'PGP', onTap: (){
                           setState(() {
                             selection=2;
                             franchiseTheme=Color.fromRGBO(168, 53, 241, 1);
@@ -91,59 +91,35 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Colors.blue.shade50,Colors.blue.shade500,Colors.blue
-                      ],
-                          begin: Alignment.topCenter,
-                          transform: GradientRotation(1.25)
-                      ),
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(width*0.04),topLeft:Radius.circular(width*0.04) )
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: height*0.01,horizontal: width*0.02),
-                    margin: EdgeInsets.symmetric(horizontal: width*0.06),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CircleAvatar(radius: width*0.12,),
-                        SizedBox(width: width*0.02,),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              selection==0?Text('BizBooster',style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),):Container(),
-                              Text(dataFranchise.franchiseName[selection],style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
-                              Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text('85% ',style: GoogleFonts.abrilFatface(fontWeight: FontWeight.w600,color: Colors.white,fontSize: 25)),
-                                  Text('₹7,00,000',style: TextStyle(fontSize: 14,color: Colors.white,decoration: TextDecoration.lineThrough,decorationColor: Colors.white),),
-                                  Text(' ₹99,999',style: textStyle18(context,color: Colors.white),),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal:width*0.06 ),
-                    padding: EdgeInsets.symmetric(vertical:height*0.01 ,horizontal:width*0.075 ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: franchiseTheme),
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(width*0.04),bottomRight: Radius.circular(width*0.04))
-                    ),
-
+                  selection!=0?customContainer(bRadius: width*0.04, vPadding: height*0.01,
+                    vMargin: height*0.02,
+                    hMargin: width*0.06,
+                    hPadding: width*0.075,
+                    borderColor: franchiseTheme,
                     child: Column(
                       children: [
                         ///Franchise name
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CircleAvatar(radius: height*0.05,),
+
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  selection==0?Text('BizBooster',style: textStyle22(context,color: franchiseTheme,fontWeight: FontWeight.w600),):Container(),
+                                  Text(dataFranchise.franchiseName[selection],style: TextStyle(fontSize: 20,color:franchiseTheme,fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
+                                  Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: TextStyle(fontSize: 16,color:franchiseTheme,fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
+                                  selection==0?Text('₹7,00,000',style: textStyle16(context,color: Colors.grey),):selection==1?Text('Recruit 10 GPs to become a SGP.',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,):Text('When your appointed GPs recruit 10 more, you become a PGP',style: textStyle14(context,color: Colors.grey),textAlign: TextAlign.end,),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                         SizedBox(height: height*0.01,),
                         ///Franchise Short Description
-
                         Column(
                           children: [
                             Text('Priority Access: Gain early access to franchise opportunities in all categories',),
@@ -161,7 +137,7 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                                         franchiseDetails[index]['data'].toString().split('.').where((sentence) => sentence.trim().isNotEmpty)
                                             .map((sentence) => '• ${sentence.trim()}')
                                             .join('\n'),
-                                        style: TextStyle(fontSize: 14),
+                                        style: textStyle14(context,fontWeight: FontWeight.w400),
                                       ),
                                       SizedBox(height: height*0.01,)
                                     ],
@@ -177,7 +153,100 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                         ),
                       ],
                     ),
-                  ),
+                  ):
+                      Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors:selection==0? [
+                                  Colors.blue.shade50,Colors.blue.shade500,Colors.blue
+                                ]:[Colors.white,Colors.white],
+                                    begin: Alignment.topCenter,
+                                    transform: GradientRotation(1.25)
+                                ),
+                                border: Border.all(color: franchiseTheme),
+                                borderRadius: BorderRadius.only(topRight: Radius.circular(width*0.04),topLeft:Radius.circular(width*0.04) )
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: height*0.01,horizontal: width*0.02),
+                            margin: EdgeInsets.symmetric(horizontal: width*0.06),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CircleAvatar(radius: width*0.12,),
+                                SizedBox(width: width*0.02,),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      selection==0?Text('BizBooster',style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),):Container(),
+                                      Text(dataFranchise.franchiseName[selection],style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
+                                      Text('(${dataFranchise.franchiseNameAbbr[selection]})',style: textStyle22(context,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w600),textAlign: TextAlign.end,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text('85.71% ',style: GoogleFonts.abrilFatface(fontWeight: FontWeight.w600,color: Colors.white,fontSize: 20)),
+                                          Text('₹7,00,000',style: TextStyle(fontSize: 14,color: Colors.white,decoration: TextDecoration.lineThrough,decorationColor: Colors.white),),
+                                          Text(' ₹99,999',style: textStyle16(context,color: Colors.white),),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal:width*0.06 ),
+                            padding: EdgeInsets.symmetric(vertical:height*0.01 ,horizontal:width*0.075 ),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: franchiseTheme),
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(width*0.04),bottomRight: Radius.circular(width*0.04))
+                            ),
+
+                            child: Column(
+                              children: [
+                                ///Franchise name
+                                SizedBox(height: height*0.01,),
+                                ///Franchise Short Description
+
+                                Column(
+                                  children: [
+                                    Text('Priority Access: Gain early access to franchise opportunities in all categories',),
+                                    SizedBox(height: height*0.01,),
+                                    ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemCount: franchiseDetails.length,
+                                        itemBuilder: (context,index){
+                                          return Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(franchiseDetails[index]['title'].toString(),style: TextStyle(fontSize: 16,color: Color.fromRGBO(0, 80, 157, 1),fontWeight: FontWeight.w500),),
+                                              Text(
+                                                franchiseDetails[index]['data'].toString().split('.').where((sentence) => sentence.trim().isNotEmpty)
+                                                    .map((sentence) => '• ${sentence.trim()}')
+                                                    .join('\n'),
+                                                style: TextStyle(fontSize: 14),
+                                              ),
+                                              SizedBox(height: height*0.01,)
+                                            ],
+                                          );
+                                        }),
+                                    SizedBox(height: height*0.015,),
+                                    customContainer(bRadius: width*0.1,vPadding: height*0.01,hPadding: width*0.1,borderColor: franchiseTheme,
+                                        child: Text('Know Benefits',style: TextStyle(fontSize: 16),),
+                                        onTap: _scrollToBenefits
+                                    ),
+                                    SizedBox(height: height*0.008,),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+
                 ],
               ),
 
@@ -206,14 +275,16 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                                   ],),
                                 Text('If you earn less than our assured earnings, we’ll refund up to 5X your initial amount',style: TextStyle(fontSize: 12,color: Colors.grey),textAlign: TextAlign.end,),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Text('₹7,00,000',style: TextStyle(color: Color.fromRGBO(0, 80, 157, 1,),fontWeight: FontWeight.w500,fontSize: 16),),
-                                    customContainer(bRadius: width*0.05,vPadding: height*0.01,hPadding: width*0.08,containerColor: Color.fromRGBO(29, 139, 242, 1),
-                                        child: Text('Buy Now',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)
-                                    ),
+                                    Text('85.71% ',style: GoogleFonts.abrilFatface(fontWeight: FontWeight.w500,color: Color.fromRGBO(0, 80, 157, 1),fontSize: 20)),
+                                    Text('₹7,00,000',style: TextStyle(color: Color.fromRGBO(0, 80, 157, 1,),fontWeight: FontWeight.w500,fontSize: 14),),
                                   ],
-                                )
+                                ),
+                                Text('₹99,999',style: textStyle16(context,color: Colors.green),textAlign: TextAlign.end,),
+                                customContainer(bRadius: width*0.05,vPadding: height*0.01,hPadding: width*0.08,containerColor: Color.fromRGBO(29, 139, 242, 1),
+                                    child: Text('Buy Now',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)
+                                ),
                               ],
                             ),
                           ),
@@ -238,7 +309,7 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                         style: textStyle18(context,color: Colors.white)
                     ),
                     Text(
-                        dataFranchise.assuredLearning[selection].toString(),
+                        dataFranchise.assuredEarning[selection].toString(),
                         style: textStyle16(context,color: Colors.white)
                     ),
                   ],
@@ -265,9 +336,9 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _columnBenefits(icon: Icons.wallet, text: dataFranchise.iconsData[selection]['value'][0].toString(), color: franchiseTheme),
-                    _columnBenefits(icon: Icons.window_rounded, text: '5X Return\nGuaranteed', color: franchiseTheme),
-                    _columnBenefits(icon: Icons.monetization_on_outlined, text:  dataFranchise.iconsData[selection]['value'][1].toString(), color: franchiseTheme),
+                    _columnBenefits( text: dataFranchise.iconsData[selection]['value'][0].toString(), color: franchiseTheme, path: 'assets/package/new_img/wallet.png'),
+                    _columnBenefits( text: '5X Return\nGuaranteed', color: franchiseTheme, path: 'assets/package/new_img/5x.png'),
+                    _columnBenefits( text:  dataFranchise.iconsData[selection]['value'][1].toString(), color: franchiseTheme, path: 'assets/package/new_img/rupee.png'),
                   ],
                 ),),
 
@@ -534,6 +605,7 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                       bRadius: 15,
                       vMargin: height*0.01,
                       child: ExpansionTile(
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
                         shape:RoundedRectangleBorder(
                             side: BorderSide.none,
                             borderRadius: BorderRadius.zero
@@ -543,9 +615,9 @@ class _OfferPackageScreenState extends State<OfferPackageScreen> {
                             borderRadius: BorderRadius.zero
                         ),
                         childrenPadding: EdgeInsets.only(left: 10),
-                        title: Text(dataFranchise.learnMore[index]['title'].toString(),style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
+                        title: Text(dataFranchise.learnMore[index]['title'].toString(),style: textStyle16(context),),
                         children: [
-                          Text(dataFranchise.learnMore[index]['data'].toString(),style: TextStyle(fontSize: 14),),
+                          Text(dataFranchise.learnMore[index]['data'].toString(),style: textStyle16(context,fontWeight: FontWeight.w400),),
                         ],
                       ),
                     );
@@ -569,10 +641,10 @@ Widget _dash({required context}){
     ],
   );
 }
-Widget _columnBenefits({required IconData icon,required String text,required Color color}){
+Widget _columnBenefits({required String text,required Color color,required String path}){
   return Column(
     children: [
-      customContainer(containerColor:color,shadowColor: Colors.transparent,borderColor: Colors.transparent,bRadius: 15, vPadding: 10,hPadding: 10,child: Icon(icon,size: 30,color: Colors.white,),),
+      customContainer(containerColor:color,shadowColor: Colors.transparent,borderColor: Colors.transparent,bRadius: 15, vPadding: 10,hPadding: 10,child: Image.asset(path,width: 35,height: 35,)),
       Text(text,textAlign: TextAlign.center,style: TextStyle(fontSize: 14,color: color,fontWeight: FontWeight.w500),)
     ],
   );

@@ -2,6 +2,41 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DataFranchise{
+  final List<dynamic> franchiseDetails=[
+    {
+      'GB':
+      [
+        {'title': 'REVENUE', 'data': 'Earn 5%-15% revenue share.'},
+        {'title': 'REFERRAL BENEFIT', 'data': 'Get ₹3,000 per team member.'},
+        {'title': 'MARKETING SUPPORT ','data':'Earn 7% team revenue.Geo-targeted ad campaigns provided.Use advanced marketing templates.'},
+      ],
+    },
+    {
+      'SGP': [
+        {
+          'title': 'REVENUE', 'data': 'Earn up to 22% revenue share.'
+        },
+        {
+          'title': 'REFERRAL BENEFIT', 'data': 'Get up to ₹5,000 per team member.'
+        },
+        {
+          'title': 'MARKETING SUPPORT ',
+          'data':'Commission: 5% to 15% per successful lead.Team Revenue Share: 5% to 10% from the team’s performance'
+        },
+      ],
+    },
+    {
+      'PGP': [
+        {'title': 'REVENUE', 'data': 'Earn up to 27% revenue share.'},
+        {'title': 'REFERRAL BENEFIT', 'data': 'Get up to ₹5,000 per team member.'},
+        {
+          'title': 'MARKETING SUPPORT ',
+          'data':
+          'Team Revenue Share: 5% to 10% from the team’s performance.Additional Team Revenue Share: 3% to 7% from GPs onboarded by direct GPs'
+        },
+      ],
+    },
+  ];
   final List<dynamic> carouselData = [
     {'key':'\nFranchise',
       'value':''
@@ -124,6 +159,7 @@ class DataFranchise{
       ],
     },
   ];
+
   final List<dynamic> learnMore=[
     {
       'title':'Learn more about revenue',
@@ -138,7 +174,7 @@ class DataFranchise{
       'data':'Receive support within 6 hours.Get priority franchise access.'
     }
   ];
-  final List<dynamic> assuredLearning=[
+  final List<dynamic> assuredEarning=[
     ' ₹30,000 – ₹50,000/month',' ₹50,000 – ₹70,000/month',' ₹70,000 – ₹1,00,000/month'
   ];
   final List<dynamic> iconsData=[

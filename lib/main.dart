@@ -10,6 +10,7 @@ import 'package:side_bizbooster/custom_widgets/views/animated_circular_progress_
 import 'package:side_bizbooster/favourite/view/favourite_view_screen.dart';
 import 'package:side_bizbooster/my_kyc/views/my_kyc_screen.dart';
 import 'package:side_bizbooster/offline_event/views/offline_event_screen.dart';
+import 'package:side_bizbooster/packages/views/after_purchase/after_purchase_screen.dart';
 import 'package:side_bizbooster/packages/views/new_package_screen.dart';
 import 'package:side_bizbooster/packages/views/old/package_view_screen.dart';
 import 'package:side_bizbooster/packages/views/old/selected_package_screen.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/service_details_screen':(context)=>ServiceDetailsScreen(),
         '/new_package_screen':(context)=>NewPackageScreen(),
         '/offline_event_screen':(context)=>OfflineEventScreen(),
+        '/after_purchase_screen':(context)=>AfterPurchaseScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
